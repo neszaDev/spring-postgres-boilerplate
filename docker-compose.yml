@@ -1,0 +1,82 @@
+services:
+  postgres:
+    profiles: [local, dev]
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-boilerplate}
+      POSTGRES_USER: ${POSTGRES_USER:-boilerplate}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-boilerplate}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    ports: ["5432:5432"]
+    volumes: ["postgres-data:/var/lib/postgresql/data"]
+    networks: [boilerplate-network]
+  app-local:
+    profiles: [local]
+    build:
+      context: .
+      target: local
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+      DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-boilerplate}
+      DB_USERNAME: ${POSTGRES_USER:-boilerplate}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-boilerplate}
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env}
+    depends_on:
+      postgres: { condition: service_healthy }
+    ports: ["8080:8080"]
+    restart: on-failure:5
+    networks: [boilerplate-network]
+    volumes:
+      - maven-cache:/root/.m2
+    develop:
+      watch:
+        # Restarting Maven recompiles source changes, so no IDE-specific build
+        # setting is needed for local hot reload.
+        - action: sync+restart
+          path: ./src
+          target: /workspace/src
+        - action: rebuild
+          path: ./pom.xml
+  app-dev:
+    profiles: [dev]
+    build:
+      context: .
+      target: runtime
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-boilerplate}
+      DB_USERNAME: ${POSTGRES_USER:-boilerplate}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-boilerplate}
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in .env}
+    depends_on:
+      postgres: { condition: service_healthy }
+    ports: ["8080:8080"]
+    restart: on-failure:5
+    networks: [boilerplate-network]
+  app-prod:
+    profiles: [prod]
+    build:
+      context: .
+      target: runtime
+    environment:
+      # List syntax passes these through only when defined by the deployment.
+      # This avoids production-only requirements blocking local Compose profiles.
+      - SPRING_PROFILES_ACTIVE=prod
+      - DB_URL
+      - DB_USERNAME
+      - DB_PASSWORD
+      - JWT_SECRET
+      - CORS_ALLOWED_ORIGINS
+    ports: ["8080:8080"]
+    restart: unless-stopped
+    networks: [boilerplate-network]
+volumes:
+  postgres-data: {}
+  maven-cache: {}
+networks:
+  boilerplate-network:
+    driver: bridge

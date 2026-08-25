@@ -1,0 +1,29 @@
+spring:
+  application.name: spring-postgres-boilerplate
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/boilerplate}
+    username: ${DB_USERNAME:boilerplate}
+    password: ${DB_PASSWORD:boilerplate}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:10}
+      minimum-idle: ${DB_POOL_MIN_IDLE:2}
+  jpa:
+    open-in-view: false
+    hibernate.ddl-auto: validate
+  flyway:
+    enabled: true
+  jackson:
+    default-property-inclusion: non_null
+management:
+  endpoints.web.exposure.include: health,info,metrics,prometheus
+  endpoint.health.probes.enabled: true
+  info.env.enabled: true
+app:
+  security.jwt:
+    # Override in every real deployment; min 32 bytes for HS256.
+    secret: ${JWT_SECRET:development-only-change-this-secret-to-at-least-32-bytes}
+    access-token-ttl: ${JWT_ACCESS_TOKEN_TTL:PT15M}
+  security.refresh-token-ttl: ${REFRESH_TOKEN_TTL:P30D}
+  cors.allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:8080}
+info.app.name: ${spring.application.name}
+info.app.version: ${APP_VERSION:dev}

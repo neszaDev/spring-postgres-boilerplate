@@ -1,0 +1,8 @@
+spring:
+  config.activate.on-profile: local
+  devtools:
+    restart.enabled: true
+  jpa.properties.hibernate.format_sql: true
+logging.level:
+  com.example.boilerplate: DEBUG
+  org.hibernate.SQL: DEBUG
