@@ -24,7 +24,7 @@ jobs:
       - name: Build
         run: |
           chmod +x ./mvnw || true
-          ./mvnw -B -DskipTests package || true
+          ./mvnw -B -DskipTests package
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
