@@ -1,0 +1,5 @@
+﻿# Force LF for shell scripts
+*.sh text eol=lf
+scripts/* text eol=lf
+mvnw text eol=lf
+*.java text eol=lf

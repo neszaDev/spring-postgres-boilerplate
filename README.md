@@ -1,4 +1,4 @@
-# Spring Boot + PostgreSQL Boilerplate
+﻿# Spring Boot + PostgreSQL Boilerplate
 
 A production-oriented Spring Boot 3 / Java 21 starter using PostgreSQL, Flyway, JWT authentication, Actuator, Prometheus metrics, structured production logs, and Docker.
 
@@ -107,3 +107,45 @@ Schema changes go in `src/main/resources/db/migration` as immutable, versioned F
 ## Shipping
 
 The Docker image is a multi-stage Maven build with a non-root JRE runtime. GitHub Actions runs tests and validates an image build. Tag releases using semantic versioning (for example `v1.2.0`) and pass `APP_VERSION` at deployment time.
+---
+
+## Developer helpers added by assistant
+
+- `./scripts/build.sh` - build the jar (wrapper or local Maven required).
+- `./scripts/test.sh` - run tests.
+- `./scripts/db-reset.sh` - wrapper for Flyway clean/migrate (use with caution).
+- `./docs/` - additional docs for development, testing and production.
+- `.github/workflows/ci.yml` - basic CI workflow to build and run tests on push/PR.
+
+To generate a Maven wrapper locally: `mvn -N io.takari:maven:wrapper`
+
+## Developer scripts
+
+Convenience scripts are provided under `./scripts` for Linux/macOS and PowerShell for Windows.
+
+- Unix/macOS:
+  - `./scripts/build.sh` — build the packaged jar (prefers `./mvnw` if present, falls back to `mvn`).
+  - `./scripts/test.sh` — run tests. Set `SKIP_INTEGRATION=true` to skip integration tests that may require Docker.
+  - `./scripts/db-reset.sh` — run Flyway `clean` + `migrate` (destructive). Prompts before running.
+
+- Windows PowerShell (from repository root):
+  - scripts\\build.ps1 — build the project.
+  - scripts\\test.ps1 — run tests.
+  - scripts\\db-reset.ps1 — reset the database using Flyway (destructive).
+
+The scripts prefer the Maven wrapper (`./mvnw` / `mvnw.cmd`) if present, otherwise they fall back to a system `mvn` installation. Generate the full Maven wrapper locally with:
+
+```sh
+mvn -N io.takari:maven:wrapper
+```
+
+
+## Contributing
+See CONTRIBUTING.md for contribution guidelines and the GitHub issue/PR templates.
+
+
+Local testing and build shortcuts
+
+- Run unit tests: `mvn test` or `./mvnw test`.
+- Full build without integration tests (useful when Docker is unavailable): `mvn clean verify -DskipITs` or `./mvnw clean verify -DskipITs`.
+- Integration tests (Testcontainers) are run in CI and require Docker when run locally.
