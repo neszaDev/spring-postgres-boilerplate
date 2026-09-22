@@ -1,0 +1,22 @@
+﻿name: CI Diagnostics
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['ci/diagnostics']
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Docker diagnostics
+        run: |
+          uname -a
+          echo '--- docker version ---'
+          docker version || true
+          echo '--- docker info ---'
+          docker info || true
+          echo '--- docker socket ---'
+          ls -la /var/run/docker.sock || true
+          df -h
