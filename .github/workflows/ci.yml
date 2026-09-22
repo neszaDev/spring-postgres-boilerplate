@@ -43,5 +43,6 @@ jobs:
           DB_URL: jdbc:postgresql://localhost:5432/boilerplate
           DB_USERNAME: boilerplate
           DB_PASSWORD: boilerplate
-        run: |\n          ./mvnw -B test
+        run: |
+          ./mvnw -B test
 
