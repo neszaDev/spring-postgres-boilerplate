@@ -1,0 +1,12 @@
+﻿name: CI Minimal
+
+on:
+  push:
+    branches: ["ci/fix-workflows"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello
+        run: echo "hello from ci-minimal"
