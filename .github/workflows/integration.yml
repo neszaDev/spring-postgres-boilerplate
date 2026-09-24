@@ -1,4 +1,4 @@
-name: Integration Tests
+﻿name: Integration Tests
 
 on:
   push:
@@ -28,4 +28,5 @@ jobs:
           DB_PASSWORD: boilerplate
         run: |
           ./mvnw -B -DskipITs=false verify
+
 
