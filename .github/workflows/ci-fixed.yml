@@ -1,4 +1,4 @@
-﻿name: CI
+﻿name: CI Fixed
 
 on:
   push:
@@ -27,15 +27,15 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "21"
+          java-version: '21'
           cache: maven
       - name: Cache Maven repository
         uses: actions/cache@v4
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-m2-${{ hashFiles("**/pom.xml") }}
-          restore-keys: |
-            ${{ runner.os }}-m2-
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys:
+            - ${{ runner.os }}-m2-
       - name: Make mvnw executable
         run: chmod +x ./mvnw || true
       - name: Build and test
@@ -43,6 +43,4 @@ jobs:
           DB_URL: jdbc:postgresql://localhost:5432/boilerplate
           DB_USERNAME: boilerplate
           DB_PASSWORD: boilerplate
-        run: |
-          ./mvnw -B test
-
+        run: ./mvnw -B test
