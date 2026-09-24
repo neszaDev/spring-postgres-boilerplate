@@ -18,7 +18,37 @@
     <dependency><groupId>io.jsonwebtoken</groupId><artifactId>jjwt-impl</artifactId><version>${jjwt.version}</version><scope>runtime</scope></dependency>
     <dependency><groupId>io.jsonwebtoken</groupId><artifactId>jjwt-jackson</artifactId><version>${jjwt.version}</version><scope>runtime</scope></dependency>
     <dependency><groupId>net.logstash.logback</groupId><artifactId>logstash-logback-encoder</artifactId><version>9.0</version></dependency>
-    <dependency>\n      <groupId>org.springdoc</groupId>\n      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>\n      <version>3.1.1</version>\n      <exclusions>\n        <exclusion>\n          <groupId>org.springframework.boot</groupId>\n          <artifactId>spring-boot-webmvc</artifactId>\n        </exclusion>\n        <exclusion>\n          <groupId>org.springframework.boot</groupId>\n          <artifactId>spring-boot-servlet</artifactId>\n        </exclusion>\n        <exclusion>\n          <groupId>org.springframework.boot</groupId>\n          <artifactId>spring-boot-http-converter</artifactId>\n        </exclusion>\n        <exclusion>\n          <groupId>org.springframework.boot</groupId>\n          <artifactId>spring-boot-web-server</artifactId>\n        </exclusion>\n        <exclusion>\n          <groupId>org.springframework.boot</groupId>\n          <artifactId>spring-boot-jackson</artifactId>\n        </exclusion>\n        <exclusion>\n          <groupId>org.springframework.boot</groupId>\n          <artifactId>spring-boot-validation</artifactId>\n        </exclusion>\n      </exclusions>\n    </dependency>
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>3.1.1</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-webmvc</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-servlet</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-http-converter</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-web-server</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-jackson</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-validation</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency><groupId>io.micrometer</groupId><artifactId>micrometer-registry-prometheus</artifactId></dependency>
     <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-devtools</artifactId><scope>runtime</scope><optional>true</optional></dependency>
     <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-test</artifactId><scope>test</scope></dependency>
@@ -88,6 +118,7 @@
 </plugins>
   </build>
 </project>
+
 
 
 
