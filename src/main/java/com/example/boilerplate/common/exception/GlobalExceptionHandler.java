@@ -6,9 +6,9 @@ import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.*;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.authentication.BadCredentialsException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -30,14 +30,17 @@ public class GlobalExceptionHandler {
   }
 
   @ExceptionHandler(InvalidRefreshTokenException.class)
-  ResponseEntity<ApiError> invalidRefreshToken(InvalidRefreshTokenException e, HttpServletRequest r) {
+  ResponseEntity<ApiError> invalidRefreshToken(
+      InvalidRefreshTokenException e, HttpServletRequest r) {
     return error(HttpStatus.UNAUTHORIZED, e.getMessage(), r, Map.of());
   }
 
   @ExceptionHandler(MethodArgumentNotValidException.class)
   ResponseEntity<ApiError> validation(MethodArgumentNotValidException e, HttpServletRequest r) {
     Map<String, String> fields = new LinkedHashMap<>();
-    e.getBindingResult().getFieldErrors().forEach(f -> fields.put(f.getField(), f.getDefaultMessage()));
+    e.getBindingResult()
+        .getFieldErrors()
+        .forEach(f -> fields.put(f.getField(), f.getDefaultMessage()));
     return error(HttpStatus.BAD_REQUEST, "Validation failed", r, fields);
   }
 
@@ -47,7 +50,9 @@ public class GlobalExceptionHandler {
     return error(HttpStatus.INTERNAL_SERVER_ERROR, "Unexpected server error", r, Map.of());
   }
 
-  private ResponseEntity<ApiError> error(HttpStatus s, String m, HttpServletRequest r, Map<String, String> f) {
-    return ResponseEntity.status(s).body(new ApiError(Instant.now(), s.value(), s.getReasonPhrase(), m, r.getRequestURI(), f));
+  private ResponseEntity<ApiError> error(
+      HttpStatus s, String m, HttpServletRequest r, Map<String, String> f) {
+    return ResponseEntity.status(s)
+        .body(new ApiError(Instant.now(), s.value(), s.getReasonPhrase(), m, r.getRequestURI(), f));
   }
 }
