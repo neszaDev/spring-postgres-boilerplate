@@ -23,3 +23,15 @@ Notes
 - Do not change Windows security (e.g., Vanguard) or Docker configuration to enable local Docker.
 - Integration tests must remain in the repo and run in CI.
 '
+## CI notes (cleanup)
+
+- Pinned org.springdoc:springdoc-openapi-starter-webmvc-ui to 2.8.13 to ensure compatibility with Spring Boot 3.5.5.
+- Local validation commands:
+  - Unit tests: mvn test
+  - Full local build (skip integration tests): mvn -DskipITs clean verify
+  - Integration tests (require Docker): run in CI; use gh run to inspect runs.
+- Common CI debug commands:
+  - gh run list --repo neszaDev/spring-postgres-boilerplate --limit 10
+  - gh run view <run-id> --repo neszaDev/spring-postgres-boilerplate --log
+  - mvn -DskipTests dependency:tree -Dincludes=org.springframework.boot -DoutputFile=target/deps.txt
+- Maven wrapper: if ./mvnw fails, use system mvn as fallback.
