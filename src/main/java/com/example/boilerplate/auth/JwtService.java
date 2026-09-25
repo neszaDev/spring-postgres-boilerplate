@@ -15,10 +15,12 @@ public class JwtService {
   private final SecretKey key;
   private final Duration ttl;
 
-  public JwtService(@Value("${app.security.jwt.secret}") String secret,
+  public JwtService(
+      @Value("${app.security.jwt.secret}") String secret,
       @Value("${app.security.jwt.access-token-ttl}") Duration ttl) {
     if (secret == null || secret.getBytes(java.nio.charset.StandardCharsets.UTF_8).length < 32) {
-      throw new IllegalStateException("JWT secret must be at least 32 bytes long; set app.security.jwt.secret appropriately.");
+      throw new IllegalStateException(
+          "JWT secret must be at least 32 bytes long; set app.security.jwt.secret appropriately.");
     }
     this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     this.ttl = ttl;
@@ -26,8 +28,13 @@ public class JwtService {
 
   public String issue(User user) {
     Instant now = Instant.now();
-    return Jwts.builder().subject(user.getEmail()).claim("role", user.getRole().name()).issuedAt(Date.from(now))
-        .expiration(Date.from(now.plus(ttl))).signWith(key).compact();
+    return Jwts.builder()
+        .subject(user.getEmail())
+        .claim("role", user.getRole().name())
+        .issuedAt(Date.from(now))
+        .expiration(Date.from(now.plus(ttl)))
+        .signWith(key)
+        .compact();
   }
 
   public long expiresInSeconds() {
