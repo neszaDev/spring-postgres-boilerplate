@@ -1,29 +1,53 @@
 spring:
-  application.name: spring-postgres-boilerplate
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/boilerplate}
     username: ${DB_USERNAME:boilerplate}
     password: ${DB_PASSWORD:boilerplate}
-    hikari:
-      maximum-pool-size: ${DB_POOL_SIZE:10}
-      minimum-idle: ${DB_POOL_MIN_IDLE:2}
+    driver-class-name: org.postgresql.Driver
   jpa:
-    open-in-view: false
-    hibernate.ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
   flyway:
     enabled: true
-  jackson:
-    default-property-inclusion: non_null
+    locations: classpath:db/migration
+
+server:
+  port: ${PORT:8080}
+
 management:
-  endpoints.web.exposure.include: health,info,metrics,prometheus
-  endpoint.health.probes.enabled: true
-  info.env.enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: when_authorized
+
 app:
-  security.jwt:
-    # Override in every real deployment; min 32 bytes for HS256.
-    secret: ${JWT_SECRET:development-only-change-this-secret-to-at-least-32-bytes}
-    access-token-ttl: ${JWT_ACCESS_TOKEN_TTL:PT15M}
-  security.refresh-token-ttl: ${REFRESH_TOKEN_TTL:P30D}
-  cors.allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:8080}
-info.app.name: ${spring.application.name}
-info.app.version: ${APP_VERSION:dev}
+  security:
+    jwt:
+      secret: ${JWT_SECRET:}
+      access-token-ttl: 15m
+      refresh-token-ttl: 30d
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:*}
+
+# Profiles
+---
+spring:
+  profiles: dev
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+app:
+  security:
+    jwt:
+      secret: ${JWT_SECRET:dev-secret-placeholder}
