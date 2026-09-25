@@ -1,4 +1,4 @@
-name: CI Diagnostics
+﻿name: CI Diagnostics
 
 on:
   workflow_dispatch:
