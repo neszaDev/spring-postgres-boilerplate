@@ -35,3 +35,7 @@ Notes
   - gh run view <run-id> --repo neszaDev/spring-postgres-boilerplate --log
   - mvn -DskipTests dependency:tree -Dincludes=org.springframework.boot -DoutputFile=target/deps.txt
 - Maven wrapper: if ./mvnw fails, use system mvn as fallback.
+
+## Verified CI run
+- Integration Tests (main): https://github.com/neszaDev/spring-postgres-boilerplate/actions/runs/36118739938
+
