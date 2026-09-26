@@ -39,3 +39,7 @@ Notes
 ## Verified CI run
 - Integration Tests (main): https://github.com/neszaDev/spring-postgres-boilerplate/actions/runs/36118739938
 
+
+## Required environment variables
+See docs/env.md for the full list and examples.
+
