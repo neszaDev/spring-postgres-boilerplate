@@ -1,4 +1,4 @@
-package com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 import com.example.boilerplate.user.User;
 import io.jsonwebtoken.*;
@@ -28,12 +28,14 @@ public class JwtService {
 
   public String issue(User user) {
     Instant now = Instant.now();
+    Date issued = Date.from(now);
+    Date exp = Date.from(now.plus(ttl));
     return Jwts.builder()
-        .subject(user.getEmail())
+        .setSubject(user.getEmail())
         .claim("role", user.getRole().name())
-        .issuedAt(Date.from(now))
-        .expiration(Date.from(now.plus(ttl)))
-        .signWith(key)
+        .setIssuedAt(issued)
+        .setExpiration(exp)
+        .signWith(SignatureAlgorithm.HS256, key)
         .compact();
   }
 
@@ -42,6 +44,6 @@ public class JwtService {
   }
 
   public Claims parse(String token) {
-    return Jwts.parser().verifyWith(key).build().parseSignedClaims(token).getPayload();
+    return Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
   }
 }
