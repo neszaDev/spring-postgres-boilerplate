@@ -1,5 +1,10 @@
 #!/bin/sh
-# ----------------------------------------------------------------------------
+# LOCAL_MAVEN_DIST_OVERRIDE
+# If a local Maven distribution is present in .maven-dist, use it to run Maven directly (avoids wrapper issues)
+if [ -x "$(pwd)/.maven-dist/apache-maven-3.6.3/bin/mvn" ] ; then
+  exec "$(pwd)/.maven-dist/apache-maven-3.6.3/bin/mvn" "$@"
+fi
+# end local override# ----------------------------------------------------------------------------
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
 # distributed with this work for additional information
@@ -308,3 +313,4 @@ exec "$JAVACMD" \
   -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
   "-Dmaven.home=${M2_HOME}" "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
   ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"
+
