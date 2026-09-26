@@ -1,4 +1,4 @@
-﻿<#[
+<#[
 .SYNOPSIS
   Reset the database using Flyway (Windows PowerShell).
   This is destructive: it cleans and migrates the database.

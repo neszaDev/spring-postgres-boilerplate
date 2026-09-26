@@ -1,4 +1,4 @@
-﻿# Testing
+# Testing
 
 Unit tests and integration tests are run with Maven. Integration tests use Testcontainers and require Docker when run locally or in CI runners that provide Docker.
 

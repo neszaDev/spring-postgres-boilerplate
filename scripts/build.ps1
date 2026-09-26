@@ -1,4 +1,4 @@
-﻿<#[
+<#[
 .SYNOPSIS
   Build the project (Windows PowerShell)
 #]>

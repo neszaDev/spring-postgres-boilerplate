@@ -1,4 +1,4 @@
-﻿import sys, yaml
+import sys, yaml
 f = sys.argv[1]
 try:
     with open(f, 'r', encoding='utf-8') as fh:
