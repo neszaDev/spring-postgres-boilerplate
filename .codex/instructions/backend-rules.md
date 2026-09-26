@@ -1,4 +1,4 @@
-﻿## Project Priority
+## Project Priority
 
 For this Spring Boot project, prioritize application functionality over repository
 housekeeping.

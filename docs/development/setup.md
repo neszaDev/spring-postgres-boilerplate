@@ -1,4 +1,4 @@
-﻿# Local development setup
+# Local development setup
 
 1. Copy `.env.example` to `.env` and set a strong `JWT_SECRET` (at least 32 bytes).
 

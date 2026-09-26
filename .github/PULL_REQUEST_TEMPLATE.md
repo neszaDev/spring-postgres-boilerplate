@@ -1,4 +1,4 @@
-﻿## Summary
+## Summary
 
 Provide a short description of the change and what it addresses.
 

@@ -1,4 +1,4 @@
-﻿# Spring Boot + PostgreSQL Boilerplate
+# Spring Boot + PostgreSQL Boilerplate
 
 A production-oriented Spring Boot 3 / Java 21 starter using PostgreSQL, Flyway, JWT authentication, Actuator, Prometheus metrics, structured production logs, and Docker.
 
