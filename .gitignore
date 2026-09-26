@@ -5,3 +5,6 @@ target/
 .env
 !.env.example
 *.log
+
+# Local maven distribution used for debugging
+.maven-dist/
