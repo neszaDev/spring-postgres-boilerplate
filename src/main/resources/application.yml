@@ -51,3 +51,7 @@ app:
   security:
     jwt:
       secret: ${JWT_SECRET:dev-secret-placeholder}
+app:
+  security:
+    refresh-token-cleanup-ms: 86400000
+
