@@ -1,8 +1,8 @@
 #!/bin/sh
 # LOCAL_MAVEN_DIST_OVERRIDE
 # If a local Maven distribution is present in .maven-dist, use it to run Maven directly (avoids wrapper issues)
-if [ -x "$(pwd)/.maven-dist/apache-maven-3.6.3/bin/mvn" ] ; then
-  exec "$(pwd)/.maven-dist/apache-maven-3.6.3/bin/mvn" "$@"
+if [ -x "$(pwd)/.maven-dist/apache-maven-3.9.6/bin/mvn" ] ; then
+  exec "$(pwd)/.maven-dist/apache-maven-3.9.6/bin/mvn" "$@"
 fi
 # end local override# ----------------------------------------------------------------------------
 # Licensed to the Apache Software Foundation (ASF) under one
