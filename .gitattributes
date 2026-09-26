@@ -1,9 +1,19 @@
-# Force LF for shell scripts
-*.sh text eol=lf
-scripts/* text eol=lf
-mvnw text eol=lf
+﻿# Repository line-ending and encoding rules
+* text=auto
 *.java text eol=lf
-
-*.yml eol=lf
-
-*.java eol=lf
+*.kt text eol=lf
+*.xml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.properties text eol=lf
+*.md text
+*.sh text eol=lf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.png -text
+*.jpg -text
+*.jpeg -text
+*.gif -text
+*.class -text
+.mvn/wrapper/maven-wrapper.jar -text
+.github/workflows/* text eol=lf
