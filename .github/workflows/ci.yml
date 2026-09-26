@@ -1,10 +1,9 @@
-name: CI
+﻿name: CI
 
 on:
   push:
-    branches: ["main", "master"]
   pull_request:
-    branches: ["main", "master"]
+  workflow_dispatch:
 
 jobs:
   format-check:
@@ -45,5 +44,3 @@ jobs:
           DB_PASSWORD: boilerplate
         run: |
           mvn -B test
-
-
