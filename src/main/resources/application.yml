@@ -28,11 +28,7 @@ management:
     health:
       show-details: when_authorized
 
-app:
-  security:
-    jwt:
-      secret: ${JWT_SECRET:}
-      access-token-ttl: 15m
+app:\n  security:\n    jwt:\n      secret: ${JWT_SECRET:00000000000000000000000000000000}\n      access-token-ttl: 15m
       refresh-token-ttl: 30d
   cors:
     allowed-origins: ${CORS_ALLOWED_ORIGINS:*}
@@ -48,5 +44,6 @@ spring:
         format_sql: true
 
 app:\n  security:\n    jwt:\n      secret: \n    refresh-token-cleanup-ms: 86400000
+
 
 
