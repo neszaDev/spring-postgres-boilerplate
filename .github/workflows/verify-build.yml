@@ -1,0 +1,22 @@
+﻿name: Verify Build (skip ITs)
+
+on:
+  push:
+    branches-ignore: ["main","master"]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Install Maven
+        run: sudo apt-get update && sudo apt-get install -y maven
+      - name: Build (skip ITs)
+        run: mvn -DskipITs=true -B clean verify
