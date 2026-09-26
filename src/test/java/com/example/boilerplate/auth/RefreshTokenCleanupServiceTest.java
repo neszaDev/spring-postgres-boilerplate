@@ -1,7 +1,7 @@
 package com.example.boilerplate.auth;
 
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import java.time.Instant;
 import org.junit.jupiter.api.BeforeEach;

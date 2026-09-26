@@ -1,5 +1,10 @@
 package com.example.boilerplate.auth;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import com.example.boilerplate.common.exception.ConflictException;
 import com.example.boilerplate.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,11 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
 
 class AuthServiceRegisterConflictTest {
   @Mock UserRepository users;
