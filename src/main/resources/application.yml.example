@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/boilerplate
+    username: boilerplate
+    password: boilerplate
+  jpa:
+    properties:
+      hibernate:
+        ddl:
+          auto: validate
+
+app:
+  security:
+    jwt:
+      secret: changeme_change_this_to_a_32_byte_secret_example_123
+      access-token-ttl: 15m
+    refresh-token-ttl: 30d
+
+logging:
+  level:
+    root: INFO
