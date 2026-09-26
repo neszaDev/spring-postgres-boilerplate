@@ -76,3 +76,4 @@ public class AuthControllerTest {
         .andExpect(status().isNoContent());
   }
 }
+
