@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.security;
+package com.example.boilerplate.security;
 
 import com.example.boilerplate.auth.JwtService;
 import io.jsonwebtoken.Claims;

@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.auth;
+package com.example.boilerplate.auth;
 
 import com.example.boilerplate.common.exception.ConflictException;
 import com.example.boilerplate.user.UserRepository;

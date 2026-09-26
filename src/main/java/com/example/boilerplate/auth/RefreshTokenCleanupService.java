@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.auth;
+package com.example.boilerplate.auth;
 
 import java.time.Instant;
 import org.springframework.beans.factory.annotation.Value;

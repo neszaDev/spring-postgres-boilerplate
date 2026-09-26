@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.auth;
+package com.example.boilerplate.auth;
 
 import com.example.boilerplate.common.exception.InvalidRefreshTokenException;
 import org.junit.jupiter.api.BeforeEach;

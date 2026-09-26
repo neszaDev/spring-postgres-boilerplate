@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.auth;
+package com.example.boilerplate.auth;
 
 import org.junit.jupiter.api.Test;
 import java.time.Duration;

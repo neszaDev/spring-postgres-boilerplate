@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.user;
+package com.example.boilerplate.user;
 
 import com.example.boilerplate.user.dto.UserResponse;
 import org.junit.jupiter.api.Test;
