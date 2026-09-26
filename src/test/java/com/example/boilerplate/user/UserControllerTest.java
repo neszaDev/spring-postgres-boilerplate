@@ -4,7 +4,8 @@ import com.example.boilerplate.user.dto.UserResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;`r`nimport com.example.boilerplate.security.JwtAuthenticationFilter;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import com.example.boilerplate.security.JwtAuthenticationFilter;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -17,7 +18,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(UserController.class)
-public class UserControllerTest {`r`n  @MockBean JwtAuthenticationFilter jwtAuthenticationFilter;
+public class UserControllerTest {
+  @MockBean JwtAuthenticationFilter jwtAuthenticationFilter;
   @Autowired MockMvc mvc;
 
   @MockBean UserService userService;
@@ -36,4 +38,3 @@ public class UserControllerTest {`r`n  @MockBean JwtAuthenticationFilter jwtAuth
     mvc.perform(get("/api/v1/users/me")).andExpect(status().isOk()).andExpect(jsonPath("$.email").value("me@example.com"));
   }
 }
-
