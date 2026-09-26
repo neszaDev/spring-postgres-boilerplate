@@ -1,4 +1,4 @@
-spring:
+﻿spring:
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/boilerplate}
     username: ${DB_USERNAME:boilerplate}
@@ -47,11 +47,6 @@ spring:
       hibernate:
         format_sql: true
 
-app:
-  security:
-    jwt:
-      secret: ${JWT_SECRET:dev-secret-placeholder}
-app:
-  security:
-    refresh-token-cleanup-ms: 86400000
+app:\n  security:\n    jwt:\n      secret: \n    refresh-token-cleanup-ms: 86400000
+
 
