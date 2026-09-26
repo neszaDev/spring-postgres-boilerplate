@@ -1,4 +1,4 @@
-package com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 import com.example.boilerplate.auth.dto.AuthTokensResponse;
 import com.example.boilerplate.auth.dto.LoginRequest;
@@ -25,7 +25,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class AuthControllerTest {
   @Autowired MockMvc mvc;
 
-  @MockBean AuthService service;
+  
+
+  @MockBean com.example.boilerplate.auth.JwtService jwtService;
 
   @Test
   void register_returnsCreatedAndTokens() throws Exception {
