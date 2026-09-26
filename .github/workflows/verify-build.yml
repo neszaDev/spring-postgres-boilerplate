@@ -1,4 +1,4 @@
-﻿name: Verify Build (skip ITs)
+name: Verify Build (skip ITs)
 
 on:
   push:
