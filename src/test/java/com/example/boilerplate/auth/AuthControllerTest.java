@@ -25,6 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class AuthControllerTest {
   @Autowired MockMvc mvc;
 
+  @MockBean AuthService service;
+
   
 
   @MockBean com.example.boilerplate.auth.JwtService jwtService;
