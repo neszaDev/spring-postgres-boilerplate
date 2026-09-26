@@ -1,18 +1,17 @@
 package com.example.boilerplate.auth;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
+
 import com.example.boilerplate.common.exception.InvalidRefreshTokenException;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.*;
 
 class RefreshTokenServiceRotateTest {
   @Mock RefreshTokenRepository repo;
