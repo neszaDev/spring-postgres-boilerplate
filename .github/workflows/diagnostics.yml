@@ -1,22 +1,38 @@
-name: CI Diagnostics
+﻿name: CI Diagnostics
 
 on:
-  workflow_dispatch:
   push:
-    branches: ['ci/diagnostics']
+  workflow_dispatch:
 
 jobs:
-  docker:
+  diagnostics:
+    name: Diagnostics
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Docker diagnostics
+      - name: Show workflow files
+        run: ls -la .github/workflows || true
+      - name: Print ci.yml with line numbers
+        run: nl -ba .github/workflows/ci.yml || true
+      - name: Print first 16 bytes of ci.yml (raw)
         run: |
-          uname -a
-          echo '--- docker version ---'
-          docker version || true
-          echo '--- docker info ---'
-          docker info || true
-          echo '--- docker socket ---'
-          ls -la /var/run/docker.sock || true
-          df -h
+          python3 - <<'PY'
+import sys
+b = open('.github/workflows/ci.yml','rb').read(16)
+print(b)
+PY
+      - name: Print file encoding
+        run: |
+          python3 - <<'PY'
+import sys
+b = open('.github/workflows/ci.yml','rb').read()
+print('len', len(b))
+try:
+ import chardet
+ print(chardet.detect(b))
+except Exception as e:
+ print('chardet not available', e)
+PY
+      - name: Print first 256 bytes in hex
+        run: |
+          if command -v hexdump >/dev/null 2>&1; then hexdump -C -n 256 .github/workflows/ci.yml; else od -An -t x1 -N 256 .github/workflows/ci.yml; fi
