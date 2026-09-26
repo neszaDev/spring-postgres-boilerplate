@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.auth;
+package com.example.boilerplate.auth;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
