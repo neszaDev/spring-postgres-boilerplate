@@ -34,7 +34,7 @@ jobs:
       - name: Build (compile sources)
         run: |
           chmod +x ./mvnw || true
-          ./mvnw -B -DskipTests -DskipITs package
+          mvn -B -DskipTests -DskipITs package
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3

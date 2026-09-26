@@ -44,6 +44,6 @@ jobs:
           DB_USERNAME: boilerplate
           DB_PASSWORD: boilerplate
         run: |
-          ./mvnw -B test
+          mvn -B test
 
 

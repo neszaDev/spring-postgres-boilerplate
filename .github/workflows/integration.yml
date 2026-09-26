@@ -27,6 +27,6 @@ jobs:
           DB_USERNAME: boilerplate
           DB_PASSWORD: boilerplate
         run: |
-          ./mvnw -B -DskipITs=false verify
+          mvn -B -DskipITs=false verify
 
 
