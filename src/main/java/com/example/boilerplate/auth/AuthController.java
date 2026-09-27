@@ -1,4 +1,4 @@
-package com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 import com.example.boilerplate.auth.dto.*;
 import com.example.boilerplate.service.AuthService;
@@ -6,7 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@RestController("authApiController")
 @RequestMapping("/api/v1/auth")
 public class AuthController {
   private final AuthService service;
@@ -37,3 +37,4 @@ public class AuthController {
     service.logout(r.refreshToken());
   }
 }
+
