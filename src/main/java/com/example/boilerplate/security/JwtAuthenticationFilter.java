@@ -1,4 +1,4 @@
-package com.example.boilerplate.security;
+﻿package com.example.boilerplate.security;
 
 import com.example.boilerplate.auth.JwtService;
 import io.jsonwebtoken.JwtException;
@@ -26,7 +26,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     String h = req.getHeader("Authorization");
     if (h != null && h.startsWith("Bearer "))
       try {
-        var claims = jwt.parse(h.substring(7));
+        var claims = jwt.parseToken(h.substring(7));
         var auth =
             new UsernamePasswordAuthenticationToken(
                 claims.getSubject(),

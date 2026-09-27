@@ -1,9 +1,9 @@
-package com.example.boilerplate.web;
+﻿package com.example.boilerplate.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatus;`nimport org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -19,14 +19,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-                                                                  HttpHeaders headers,
-                                                                  HttpStatus status,
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,\n                                                                  HttpHeaders headers,\n                                                                  HttpStatusCode status,
                                                                   WebRequest request) {
         String message = ex.getBindingResult().getFieldErrors().stream()
                 .map(FieldError::getDefaultMessage)
                 .collect(Collectors.joining(", "));
-        ApiError apiError = new ApiError(status.value(), status.getReasonPhrase(), message, request.getDescription(false));
+        int code = status.value();\n        String reason = (status instanceof HttpStatus hs) ? hs.getReasonPhrase() : "";\n        ApiError apiError = new ApiError(code, reason, message, request.getDescription(false));
         log.warn("Validation failed: {}", message);
         return new ResponseEntity<>(apiError, headers, status);
     }
@@ -39,3 +37,4 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(apiError, status);
     }
 }
+
