@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.config;
+package com.example.boilerplate.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,9 @@ public class JwtProperties {
   private String accessTokenTtl = "15m";
   private String refreshTokenTtl = "30d";
 
-  \n  private int maxRefreshTokens = 5;\npublic String getSecret() {
+  
+  private int maxRefreshTokens = 5;
+public String getSecret() {
     return secret;
   }
 
@@ -26,7 +28,15 @@ public class JwtProperties {
     this.accessTokenTtl = accessTokenTtl;
   }
 
-  \n\n  public int getMaxRefreshTokens() {\n    return maxRefreshTokens;\n  }\n\n  public void setMaxRefreshTokens(int maxRefreshTokens) {\n    this.maxRefreshTokens = maxRefreshTokens;\n  }
+  
+
+  public int getMaxRefreshTokens() {
+    return maxRefreshTokens;
+  }
+
+  public void setMaxRefreshTokens(int maxRefreshTokens) {
+    this.maxRefreshTokens = maxRefreshTokens;
+  }
 
   public void setRefreshTokenTtl(String refreshTokenTtl) {
     this.refreshTokenTtl = refreshTokenTtl;

@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.service;
+package com.example.boilerplate.service;
 
 import com.example.boilerplate.auth.dto.AuthTokensResponse;
 import com.example.boilerplate.model.RefreshToken;
@@ -18,7 +18,10 @@ public class RefreshTokenService {
   private final RefreshTokenRepository repo;
   private final JwtService jwt;
   private final Duration refreshTtl;
-  private final SecureRandom secureRandom = new SecureRandom();\n\n  // configurable maximum number of active refresh tokens per user\n  private int maxRefreshTokens = 5;
+  private final SecureRandom secureRandom = new SecureRandom();
+
+  // configurable maximum number of active refresh tokens per user
+  private int maxRefreshTokens = 5;
 
   public RefreshTokenService(RefreshTokenRepository repo, JwtService jwt, Duration refreshTtl) {
     this.repo = repo;
@@ -27,7 +30,14 @@ public class RefreshTokenService {
   }
 
   public AuthTokensResponse create(User user) {
-    try {\n      // prune oldest tokens if exceeding maxRefreshTokens\n      java.util.List<com.example.boilerplate.model.RefreshToken> existing = repo.findByUserOrderByExpiresAtAsc(user);\n      if (existing != null && existing.size() >= maxRefreshTokens) {\n        int toDelete = existing.size() - (maxRefreshTokens - 1);\n        for (int i=0;i<toDelete;i++) { repo.delete(existing.get(i)); }\n      }\n      byte[] bytes = new byte[48];
+    try {
+      // prune oldest tokens if exceeding maxRefreshTokens
+      java.util.List<com.example.boilerplate.model.RefreshToken> existing = repo.findByUserOrderByExpiresAtAsc(user);
+      if (existing != null && existing.size() >= maxRefreshTokens) {
+        int toDelete = existing.size() - (maxRefreshTokens - 1);
+        for (int i=0;i<toDelete;i++) { repo.delete(existing.get(i)); }
+      }
+      byte[] bytes = new byte[48];
       secureRandom.nextBytes(bytes);
       String token = Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
       MessageDigest md = MessageDigest.getInstance("SHA-256");
