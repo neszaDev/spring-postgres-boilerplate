@@ -1,9 +1,10 @@
-package com.example.boilerplate.integration;
+﻿package com.example.boilerplate.integration;
 
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import org.flywaydb.core.Flyway;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -13,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class DatabaseIntegrationIT {
 
   @Container
-  public static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15-alpine")
-      .withDatabaseName("boilerplate")
-      .withUsername("boilerplate")
-      .withPassword("boilerplate");
+  public static PostgreSQLContainer<?> postgres = new PostgreSQLContainer( postgres:15-alpine)
+      .withDatabaseName(boilerplate)
+      .withUsername(boilerplate)
+      .withPassword(boilerplate);
 
   @Test
   void flyway_migrations_apply_and_table_exists() throws Exception {
@@ -24,12 +25,15 @@ public class DatabaseIntegrationIT {
     String username = postgres.getUsername();
     String password = postgres.getPassword();
 
+    // Run Flyway migrations against the test container
+    Flyway.configure().dataSource(jdbcUrl, username, password).load().migrate();
+
     DriverManagerDataSource ds = new DriverManagerDataSource(jdbcUrl, username, password);
-    ds.setDriverClassName("org.postgresql.Driver");
+    ds.setDriverClassName(org.postgresql.Driver);
     JdbcTemplate jdbc = new JdbcTemplate(ds);
 
     // simple existence check for users table created by Flyway migrations
-    Integer count = jdbc.queryForObject("SELECT COUNT(*) FROM information_schema.tables WHERE table_name = 'users'", Integer.class);
-    assertTrue(count != null && count > 0, "users table should exist after migrations");
+    Integer count = jdbc.queryForObject(SELECT COUNT 1 FROM information_schema.tables WHERE table_name = users , Integer.class);
+    assertTrue(count != null && count > 0,  users table should exist after migrations);
   }
 }
