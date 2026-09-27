@@ -1,4 +1,4 @@
-﻿## Summary
+## Summary
 
 - Add JWT authentication foundation (JWT validation, refresh tokens) and scheduled refresh-token cleanup.
 - Add debug CI workflows and .gitattributes to fix cross-platform BOM/EOL issues and improve CI diagnostics.

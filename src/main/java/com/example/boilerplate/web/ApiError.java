@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.web;
+package com.example.boilerplate.web;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

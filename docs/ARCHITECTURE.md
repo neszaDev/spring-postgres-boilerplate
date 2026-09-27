@@ -1,4 +1,4 @@
-﻿# Architecture Overview
+# Architecture Overview
 
 This repository implements a Spring Boot backend foundation with a layered architecture:
 

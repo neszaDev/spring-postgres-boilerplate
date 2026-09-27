@@ -1,4 +1,4 @@
-﻿PR Guidelines
+PR Guidelines
 
 - Keep PRs focused and small when possible.
 - Include tests for new behavior.

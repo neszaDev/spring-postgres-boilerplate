@@ -1,4 +1,4 @@
-﻿## Summary
+## Summary
 
 <!-- 2-4 bullets explaining the main purpose of this PR. -->
 

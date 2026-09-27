@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.service;
+package com.example.boilerplate.service;
 
 import com.example.boilerplate.auth.JwtService;
 import com.example.boilerplate.model.User;
