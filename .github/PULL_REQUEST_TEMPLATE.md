@@ -1,23 +1,29 @@
-## Summary
+﻿## Summary
 
-Provide a short description of the change and what it addresses.
+<!-- 2-4 bullets explaining the main purpose of this PR. -->
 
-## Related issues
+## What Changed
 
-- Closes #<issue-number> (if applicable)
+- Application
+  - Briefly describe application changes.
+- Build & Development
+  - Briefly describe build/dev infra changes.
+- Testing
+  - Tests added/modified and where they run (local/CI).
 
-## Changes
+## Testing
 
-- Short bulleted list of changes
+- Local: `mvn test` (unit tests). `mvn -DskipITs=true clean verify` for full local build.
+- CI: Integration tests (Testcontainers) run only in GitHub Actions.
 
-## Checklist
+## Notes
 
-- [ ] I have run the tests: `./scripts/test.sh`
-- [ ] I added or updated tests for my changes
-- [ ] I updated documentation where necessary
-- [ ] I updated `CHANGELOG.md` if this change is user-facing
-- [ ] I followed the project's coding guidelines (check `CONTRIBUTING.md`)
+- Important implementation notes, limitations, or follow-up tasks.
 
-## Notes for reviewers
+## Breaking Changes
 
-Include any additional information to help reviewers understand the change.
+- None
+
+## Review Focus
+
+- Areas to pay attention to during review.
