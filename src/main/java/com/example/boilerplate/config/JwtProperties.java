@@ -38,7 +38,11 @@ public String getSecret() {
     this.maxRefreshTokens = maxRefreshTokens;
   }
 
-  public void setRefreshTokenTtl(String refreshTokenTtl) {
+  public String getRefreshTokenTtl() {
+    return refreshTokenTtl;
+  }
+
+  
     this.refreshTokenTtl = refreshTokenTtl;
   }
 }
