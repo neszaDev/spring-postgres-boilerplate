@@ -1,0 +1,71 @@
+﻿name: CI Diagnostics
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main","master","ci/verify-debug"]
+  pull_request:
+    branches: ["main","master"]
+
+jobs:
+  diagnostics:
+    name: Runner & Docker diagnostics
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Runner info
+        run: |
+          echo "Runner: $(uname -a)"
+          echo "RUNNER_OS=$RUNNER_OS"
+          echo "GITHUB_REF=$GITHUB_REF"
+          echo "GITHUB_SHA=$GITHUB_SHA"
+
+      - name: Java & Maven
+        run: |
+          echo '--- java ---'
+          java -version || true
+          echo '--- mvn ---'
+          mvn -v || true
+
+      - name: Docker version & info
+        run: |
+          echo '--- docker --version ---'
+          docker --version || true
+          echo '--- docker info ---'
+          docker info || true
+          echo '--- docker socket ---'
+          if [ -S /var/run/docker.sock ]; then ls -l /var/run/docker.sock || true; else echo '/var/run/docker.sock not found'; fi
+
+      - name: Testcontainers environment checks
+        run: |
+          echo '--- cgroup info ---'
+          if [ -f /proc/self/cgroup ]; then cat /proc/self/cgroup || true; else echo '/proc/self/cgroup not present'; fi
+          echo '--- java tmp dir ---'
+          echo "JAVA_TMPDIR=${JAVA_TMPDIR:-unset}"
+
+      - name: Environment summary
+        run: |
+          echo '--- env vars relevant to Docker/Testcontainers ---'
+          echo "DOCKER_HOST=${DOCKER_HOST:-unset}"
+          echo "DOCKER_TLS_VERIFY=${DOCKER_TLS_VERIFY:-unset}"
+          echo "DOCKER_CERT_PATH=${DOCKER_CERT_PATH:-unset}"
+          echo "TESTCONTAINERS_RYUK_DISABLED=${TESTCONTAINERS_RYUK_DISABLED:-unset}"
+
+      - name: List docker groups/users
+        run: |
+          echo '--- groups ---'
+          groups || true
+          echo '--- id ---'
+          id || true
+
+      - name: Upload diagnostic logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostics-logs
+          path: |
+            /home/runner/**/docker*  
+            /**/docker* || true
