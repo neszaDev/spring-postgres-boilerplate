@@ -4,6 +4,10 @@
   jackson:
     serialization:
       write-dates-as-timestamps: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
 
 management:
   endpoints:
@@ -23,11 +27,3 @@ micrometer:
 logging:
   level:
     root: INFO
-
-# Flyway migration defaults
-spring:
-  flyway:
-    enabled: true
-    locations: classpath:db/migration
-    baseline-on-migrate: true
-
