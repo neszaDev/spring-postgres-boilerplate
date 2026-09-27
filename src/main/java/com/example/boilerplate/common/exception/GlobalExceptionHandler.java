@@ -1,4 +1,4 @@
-package com.example.boilerplate.common.exception;
+﻿package com.example.boilerplate.common.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.Instant;
@@ -42,6 +42,10 @@ public class GlobalExceptionHandler {
         .getFieldErrors()
         .forEach(f -> fields.put(f.getField(), f.getDefaultMessage()));
     return error(HttpStatus.BAD_REQUEST, "Validation failed", r, fields);
+  @ExceptionHandler(IllegalArgumentException.class)
+  ResponseEntity<ApiError> badRequest(IllegalArgumentException e, HttpServletRequest r) {
+    return error(HttpStatus.BAD_REQUEST, e.getMessage(), r, Map.of());
+  }
   }
 
   @ExceptionHandler(Exception.class)
@@ -56,3 +60,4 @@ public class GlobalExceptionHandler {
         .body(new ApiError(Instant.now(), s.value(), s.getReasonPhrase(), m, r.getRequestURI(), f));
   }
 }
+
