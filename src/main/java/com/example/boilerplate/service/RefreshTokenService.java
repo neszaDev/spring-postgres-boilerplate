@@ -27,8 +27,7 @@ public class RefreshTokenService {
   }
 
   public AuthTokensResponse create(User user) {
-    try {
-      byte[] bytes = new byte[48];
+    try {\n      // prune oldest tokens if exceeding maxRefreshTokens\n      java.util.List<com.example.boilerplate.model.RefreshToken> existing = repo.findByUserOrderByExpiresAtAsc(user);\n      if (existing != null && existing.size() >= maxRefreshTokens) {\n        int toDelete = existing.size() - (maxRefreshTokens - 1);\n        for (int i=0;i<toDelete;i++) { repo.delete(existing.get(i)); }\n      }\n      byte[] bytes = new byte[48];
       secureRandom.nextBytes(bytes);
       String token = Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
       MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -110,4 +109,5 @@ public class RefreshTokenService {
     }
   }
 }
+
 
