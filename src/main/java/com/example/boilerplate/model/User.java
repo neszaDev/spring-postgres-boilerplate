@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.model;
+package com.example.boilerplate.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;

@@ -1,4 +1,4 @@
-﻿# Environment Variables
+# Environment Variables
 
 This project reads configuration from environment variables. The most commonly required variables are:
 

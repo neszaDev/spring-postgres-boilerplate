@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate;
+package com.example.boilerplate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;\nimport org.springframework.boot.context.properties.EnableConfigurationProperties;\nimport org.springframework.scheduling.annotation.EnableScheduling;\nimport com.example.boilerplate.config.JwtProperties;
