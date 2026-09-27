@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.integration;
+package com.example.boilerplate.integration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
