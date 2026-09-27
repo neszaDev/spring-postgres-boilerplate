@@ -1,4 +1,4 @@
-package com.example.boilerplate.integration;
+﻿package com.example.boilerplate.integration;
 
 import org.flywaydb.core.Flyway;
 import org.junit.jupiter.api.Test;
@@ -54,3 +54,4 @@ public class DatabaseIntegrationIT {
         }
     }
 }
+

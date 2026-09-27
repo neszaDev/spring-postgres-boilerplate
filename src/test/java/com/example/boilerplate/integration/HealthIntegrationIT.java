@@ -1,4 +1,4 @@
-package com.example.boilerplate.integration;
+﻿package com.example.boilerplate.integration;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,3 +44,4 @@ public class HealthIntegrationIT {
         assertEquals("UP", r.getBody().get("status"));
     }
 }
+

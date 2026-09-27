@@ -1,5 +1,4 @@
-﻿package ume.Project.CRMS.spring-postgres-boilerplate.src.test.java.com.example.boilerplate.auth;
-
+﻿package com.example.boilerplate.auth;
 
 import com.example.boilerplate.security.JwtService;
 import com.example.boilerplate.config.JwtProperties;
@@ -22,5 +21,6 @@ public class JwtServiceTest {
         assertEquals("sub123", claims.getBody().getSubject());
     }
 }
+
 
 
