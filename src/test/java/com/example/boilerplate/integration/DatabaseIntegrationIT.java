@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.integration;
+package com.example.boilerplate.integration;
 
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.PostgreSQLContainer;
