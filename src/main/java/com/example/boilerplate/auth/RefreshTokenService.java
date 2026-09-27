@@ -50,7 +50,9 @@ public class RefreshTokenService {
   }
 
   private AuthTokensResponse response(User user, String refresh) {
-    return new AuthTokensResponse(jwt.generateToken(user.getId().toString(), 15*60*1000L), " Bearer\, 15*60, refresh, ttl.toSeconds());
+    long accessExpiresInSeconds = 15L * 60L; // 15 minutes
+    String accessToken = jwt.generateToken(user.getId().toString(), accessExpiresInSeconds * 1000L);
+    return new AuthTokensResponse(accessToken, "Bearer", accessExpiresInSeconds, refresh, ttl.toSeconds());
   }
 
   private String generate() {
@@ -69,4 +71,3 @@ public class RefreshTokenService {
     }
   }
 }
-
