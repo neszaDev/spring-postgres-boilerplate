@@ -27,12 +27,11 @@ class RefreshTokenServiceTest {
   @Test
   void create_savesAndReturnsTokens() {
     User user = mock(User.class);
-    when(user.getEmail()).thenReturn("me@example.com");
+    when(user.getId()).thenReturn(123L);
 
     // simulate save returns a RefreshToken via repository.save (we don't verify persisted id)
     when(repo.save(any())).thenAnswer(i -> i.getArgument(0));
-    when(jwt.issue(any())).thenReturn("jwt-token");
-    when(jwt.expiresInSeconds()).thenReturn(900L);
+    when(jwt.generateToken(anyString(), anyLong())).thenReturn("jwt-token");
 
     AuthTokensResponse r = svc.create(user);
     assertNotNull(r);
