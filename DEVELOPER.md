@@ -63,3 +63,7 @@ There is a helper script at `scripts/run-verify-skip-its.{sh,ps1}` which will tr
 
 - JWT_SECRET: required for non-test profiles; provide a secure 32+ character secret via environment or CI secrets. Example (Linux/macOS): export JWT_SECRET=your_secret_here
 
+
+## Scheduled jobs
+- The app runs a daily cleanup of expired refresh tokens at 03:00 UTC via Spring Scheduling. Configure scheduling via Spring properties if needed.
+
