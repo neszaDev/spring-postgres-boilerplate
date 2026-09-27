@@ -11,7 +11,7 @@ import org.testcontainers.junit.jupiter.*;
 @SpringBootTest
 class BoilerplateApplicationIT {
   @Container
-  static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:17-alpine");
+  static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15-alpine");
 
   @DynamicPropertySource
   static void database(DynamicPropertyRegistry r) {
