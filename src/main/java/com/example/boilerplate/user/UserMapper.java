@@ -1,7 +1,7 @@
-package com.example.boilerplate.user;
+﻿package com.example.boilerplate.user;
 
 import com.example.boilerplate.model.dto.UserResponse;
-import org.mapstruct.Mapper;
+import com.example.boilerplate.model.User;`nimport org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
