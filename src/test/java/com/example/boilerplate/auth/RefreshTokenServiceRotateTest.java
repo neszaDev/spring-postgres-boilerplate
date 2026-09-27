@@ -1,4 +1,4 @@
-import static org.junit.jupiter.api.Assertions.assertThrows;
+﻿package com.example.boilerplate.auth;`r`n`r`nimport static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -41,3 +41,4 @@ class RefreshTokenServiceRotateTest {
     verify(repo).delete(token);
   }
 }
+
