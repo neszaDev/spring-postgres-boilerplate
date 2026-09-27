@@ -37,4 +37,3 @@ public class HealthE2EIT {
     assertThat(resp.getBody()).contains("UP");
   }
 }
-

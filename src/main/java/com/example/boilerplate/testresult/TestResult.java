@@ -71,5 +71,3 @@ public class TestResult extends AuditableEntity {
     return notes;
   }
 }
-
-

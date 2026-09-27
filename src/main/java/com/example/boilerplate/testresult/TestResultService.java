@@ -1,13 +1,13 @@
 package com.example.boilerplate.testresult;
 
 import com.example.boilerplate.common.exception.NotFoundException;
-import com.example.boilerplate.testresult.dto.*;
 import com.example.boilerplate.model.*;
+import com.example.boilerplate.repository.UserRepository;
+import com.example.boilerplate.testresult.dto.*;
 import java.util.*;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.example.boilerplate.repository.UserRepository;
 
 @Service
 @Transactional
@@ -82,5 +82,3 @@ public class TestResultService {
         r.getUpdatedAt());
   }
 }
-
-

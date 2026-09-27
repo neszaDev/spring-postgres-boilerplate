@@ -1,10 +1,9 @@
 package com.example.boilerplate.auth;
 
-import com.example.boilerplate.repository.RefreshTokenRepository;
-import com.example.boilerplate.service.RefreshTokenCleanupService;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
+import com.example.boilerplate.service.RefreshTokenCleanupService;
 import java.time.Instant;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,11 +26,3 @@ class RefreshTokenCleanupServiceTest {
     verify(repo, times(1)).deleteByExpiresAtBefore(org.mockito.ArgumentMatchers.any(Instant.class));
   }
 }
-
-
-
-
-
-
-
-

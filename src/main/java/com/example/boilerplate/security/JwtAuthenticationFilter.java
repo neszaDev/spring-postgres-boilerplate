@@ -1,6 +1,5 @@
 package com.example.boilerplate.security;
 
-import com.example.boilerplate.security.JwtService;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -8,8 +7,8 @@ import java.io.IOException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
   private final JwtService jwt;
 
@@ -38,5 +37,3 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     chain.doFilter(req, res);
   }
 }
-
-

@@ -1,6 +1,9 @@
 package com.example.boilerplate.security;
 
-import com.example.boilerplate.security.JwtService;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.junit.jupiter.api.AfterEach;
@@ -11,12 +14,6 @@ import org.springframework.mock.web.MockFilterChain;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.security.core.context.SecurityContextHolder;
-
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
 
 class JwtAuthenticationFilterTest {
   JwtService jwt = Mockito.mock(JwtService.class);
@@ -39,7 +36,21 @@ class JwtAuthenticationFilterTest {
     claims.setSubject("me@example.com");
     claims.put("role", "USER");
 
-    when(jwt.parseToken(anyString())).thenReturn(new io.jsonwebtoken.Jws<Claims>() { public Claims getBody(){ return claims; } public io.jsonwebtoken.JwsHeader getHeader(){ return null; } public String getSignature(){ return ""; } });
+    when(jwt.parseToken(anyString()))
+        .thenReturn(
+            new io.jsonwebtoken.Jws<Claims>() {
+              public Claims getBody() {
+                return claims;
+              }
+
+              public io.jsonwebtoken.JwsHeader getHeader() {
+                return null;
+              }
+
+              public String getSignature() {
+                return "";
+              }
+            });
 
     MockHttpServletRequest req = new MockHttpServletRequest();
     req.addHeader("Authorization", "Bearer token");
@@ -53,5 +64,3 @@ class JwtAuthenticationFilterTest {
     assertEquals(1, auth.getAuthorities().size());
   }
 }
-
-

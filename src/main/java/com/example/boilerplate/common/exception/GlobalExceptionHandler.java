@@ -49,7 +49,6 @@ public class GlobalExceptionHandler {
     return error(HttpStatus.BAD_REQUEST, e.getMessage(), r, Map.of());
   }
 
-
   @ExceptionHandler(Exception.class)
   ResponseEntity<ApiError> generic(Exception e, HttpServletRequest r) {
     log.error("Unexpected server error", e);
@@ -62,4 +61,3 @@ public class GlobalExceptionHandler {
         .body(new ApiError(Instant.now(), s.value(), s.getReasonPhrase(), m, r.getRequestURI(), f));
   }
 }
-
