@@ -1,4 +1,6 @@
-package com.example.boilerplate.auth;rnrnimport static org.junit.jupiter.api.Assertions.assertThrows;
+package com.example.boilerplate.auth;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
