@@ -1,6 +1,6 @@
-package com.example.boilerplate.service;
+﻿package com.example.boilerplate.service;
 
-import com.example.boilerplate.auth.JwtService;
+import com.example.boilerplate.security.JwtService;
 import com.example.boilerplate.model.User;
 import com.example.boilerplate.repository.RefreshTokenRepository;
 import com.example.boilerplate.repository.UserRepository;
@@ -72,3 +72,4 @@ public class AuthServiceTest {
         verify(refreshTokenRepository, times(1)).save(any());
     }
 }
+
