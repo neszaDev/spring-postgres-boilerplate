@@ -1,5 +1,5 @@
-﻿package com.example.boilerplate.auth;
-
+﻿
+import com.example.boilerplate.model.RefreshToken;
 import com.example.boilerplate.security.JwtService;
 import com.example.boilerplate.service.RefreshTokenService;
 import com.example.boilerplate.common.exception.InvalidRefreshTokenException;
@@ -44,6 +44,7 @@ class RefreshTokenServiceRotateTest {
     verify(repo).delete(token);
   }
 }
+
 
 
 
