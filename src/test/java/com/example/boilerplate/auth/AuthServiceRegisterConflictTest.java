@@ -1,7 +1,7 @@
-package com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 import com.example.boilerplate.common.exception.ConflictException;
-import com.example.boilerplate.model.UserRepository;
+import com.example.boilerplate.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -14,15 +14,12 @@ import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 
 class AuthServiceRegisterConflictTest {
-  @Mock UserRepository users;
-  @Mock PasswordEncoder encoder;
-  @Mock RefreshTokenService refreshTokens;
-  AuthService service;
+  @Mock UserRepository users;\n  @Mock PasswordEncoder encoder;\n  @Mock com.example.boilerplate.repository.RefreshTokenRepository refreshTokenRepository;\n  @Mock com.example.boilerplate.security.JwtService jwtService;\n  @Mock com.example.boilerplate.config.JwtProperties jwtProperties;\n  AuthService service;
 
   @BeforeEach
   void init() {
     MockitoAnnotations.openMocks(this);
-    service = new AuthService(users, encoder, refreshTokens);
+    service = new AuthService(users, refreshTokenRepository, encoder, jwtService, jwtProperties);
   }
 
   @Test
@@ -33,3 +30,4 @@ class AuthServiceRegisterConflictTest {
     verify(users).existsByEmail(anyString());
   }
 }
+
