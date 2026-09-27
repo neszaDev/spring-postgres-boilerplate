@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Long> {
+
   Optional<RefreshToken> findByTokenHash(String tokenHash);
 
   List<RefreshToken> findByUserAndExpiresAtAfter(User user, Instant now);
@@ -21,4 +22,6 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Long
   @Lock(LockModeType.PESSIMISTIC_WRITE)
   @Query("select t from RefreshToken t join fetch t.user where t.tokenHash = :hash")
   Optional<RefreshToken> findByTokenHashForUpdate(@Param("hash") String hash);
-\n  List<RefreshToken> findByUserOrderByExpiresAtAsc(User user);\n}\n
+
+  List<RefreshToken> findByUserOrderByExpiresAtAsc(User user);
+}
