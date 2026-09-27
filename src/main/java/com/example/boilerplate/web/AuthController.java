@@ -35,4 +35,4 @@ public class AuthController {
         String refresh = authService.createRefreshToken(u, 30);
         return ResponseEntity.ok(Map.of("accessToken", access, "refreshToken", refresh));
     }
-}
+
