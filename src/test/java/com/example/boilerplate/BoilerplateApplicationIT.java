@@ -8,7 +8,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.*;
 
 @Testcontainers
-@SpringBootTest(properties = " spring.flyway.enabled=false\)
+@SpringBootTest(properties = "spring.flyway.enabled=false")
 class BoilerplateApplicationIT {
   @Container
   static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15-alpine");
