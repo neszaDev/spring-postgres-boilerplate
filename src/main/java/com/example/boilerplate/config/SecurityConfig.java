@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.config;
+package com.example.boilerplate.config;
 
 import com.example.boilerplate.security.JwtService;
 import com.example.boilerplate.model.User;
