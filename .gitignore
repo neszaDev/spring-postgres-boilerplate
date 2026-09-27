@@ -8,3 +8,14 @@ target/
 
 # Local maven distribution used for debugging
 .maven-dist/
+
+/artifacts/
+/.maven-dist/
+/.mvn/wrapper/maven-wrapper.jar
+/.mvn/wrapper/maven-wrapper.properties
+/.mvn/wrapper/MavenWrapperDownloader.java
+/.mvn/wrapper/
+/*.log
+/*.zip
+node_modules/
+.DS_Store
