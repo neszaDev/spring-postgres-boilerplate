@@ -1,5 +1,5 @@
-package com.example.boilerplate.auth;
-
+﻿
+import com.example.boilerplate.security.JwtService;
 import com.example.boilerplate.config.JwtProperties;
 import org.junit.jupiter.api.Test;
 
@@ -20,3 +20,4 @@ public class JwtServiceTest {
         assertEquals("sub123", claims.getBody().getSubject());
     }
 }
+
