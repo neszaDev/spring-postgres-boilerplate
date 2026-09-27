@@ -1,4 +1,4 @@
-package com.example.boilerplate.repository;
+﻿package com.example.boilerplate.repository;
 
 import com.example.boilerplate.model.RefreshToken;
 import com.example.boilerplate.model.User;
@@ -21,4 +21,4 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Long
   @Lock(LockModeType.PESSIMISTIC_WRITE)
   @Query("select t from RefreshToken t join fetch t.user where t.tokenHash = :hash")
   Optional<RefreshToken> findByTokenHashForUpdate(@Param("hash") String hash);
-}
+\n  List<RefreshToken> findByUserOrderByExpiresAtAsc(User user);\n}\n
