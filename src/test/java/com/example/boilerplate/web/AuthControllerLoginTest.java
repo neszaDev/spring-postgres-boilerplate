@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc(addFilters = false)
-@TestPropertySource(properties = 'spring.main.allow-bean-definition-overriding=true')
+@TestPropertySource(properties = "spring.main.allow-bean-definition-overriding=true")
 @WebMvcTest(AuthController.class)
 public class AuthControllerLoginTest {
     @Autowired
