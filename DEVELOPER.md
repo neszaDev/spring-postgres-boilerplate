@@ -58,3 +58,8 @@ There is a helper script at `scripts/run-verify-skip-its.{sh,ps1}` which will tr
 - CI uses JDK 21. Ensure `JAVA_HOME` is set to a JDK 21-compatible distribution locally when reproducing CI.
 - Integration tests (Testcontainers) run only in CI on GitHub Actions (`.github/workflows/integration.yml`). Local machines without Docker should skip integration tests using `-DskipITs=true`.
 
+
+## Environment variables
+
+- JWT_SECRET: required for non-test profiles; provide a secure 32+ character secret via environment or CI secrets. Example (Linux/macOS): export JWT_SECRET=your_secret_here
+
