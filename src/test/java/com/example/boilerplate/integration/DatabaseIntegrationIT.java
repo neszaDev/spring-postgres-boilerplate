@@ -1,4 +1,4 @@
-package com.example.boilerplate.integration;
+﻿package com.example.boilerplate.integration;
 
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.PostgreSQLContainer;
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class DatabaseIntegrationIT {
 
   @Container
-  public static PostgreSQLContainer<?> postgres = new PostgreSQLContainer( postgres:15-alpine)
+  public static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>( postgres:15-alpine)
       .withDatabaseName(boilerplate)
       .withUsername(boilerplate)
       .withPassword(boilerplate);
