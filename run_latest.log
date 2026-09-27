@@ -1,0 +1,137 @@
+﻿hello	Set up job	﻿2026-09-27T10:52:03.6749925Z Current runner version: '2.337.0'
+hello	Set up job	2026-09-27T10:52:03.6776108Z ##[group]Runner Image Provisioner
+hello	Set up job	2026-09-27T10:52:03.6777064Z Hosted Compute Agent
+hello	Set up job	2026-09-27T10:52:03.6777756Z Version: 20260828.587
+hello	Set up job	2026-09-27T10:52:03.6778757Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+hello	Set up job	2026-09-27T10:52:03.6779645Z Build Date: 2026-08-28T16:44:25Z
+hello	Set up job	2026-09-27T10:52:03.6780357Z Worker ID: {75349a27-d9fc-432e-b697-e76126845ce8}
+hello	Set up job	2026-09-27T10:52:03.6781151Z Azure Region: northcentralus
+hello	Set up job	2026-09-27T10:52:03.6781812Z ##[endgroup]
+hello	Set up job	2026-09-27T10:52:03.6783248Z ##[group]Operating System
+hello	Set up job	2026-09-27T10:52:03.6784015Z Ubuntu
+hello	Set up job	2026-09-27T10:52:03.6784580Z 24.04.5
+hello	Set up job	2026-09-27T10:52:03.6785102Z LTS
+hello	Set up job	2026-09-27T10:52:03.6785765Z ##[endgroup]
+hello	Set up job	2026-09-27T10:52:03.6786376Z ##[group]Runner Image
+hello	Set up job	2026-09-27T10:52:03.6787082Z Image: ubuntu-24.04
+hello	Set up job	2026-09-27T10:52:03.6787672Z Version: 20260920.314.1
+hello	Set up job	2026-09-27T10:52:03.6789020Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260920.314/images/ubuntu/Ubuntu2404-Readme.md
+hello	Set up job	2026-09-27T10:52:03.6790881Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260920.314
+hello	Set up job	2026-09-27T10:52:03.6791993Z ##[endgroup]
+hello	Set up job	2026-09-27T10:52:03.6793202Z ##[group]GITHUB_TOKEN Permissions
+hello	Set up job	2026-09-27T10:52:03.6795206Z Contents: read
+hello	Set up job	2026-09-27T10:52:03.6795836Z Metadata: read
+hello	Set up job	2026-09-27T10:52:03.6796441Z Packages: read
+hello	Set up job	2026-09-27T10:52:03.6797091Z ##[endgroup]
+hello	Set up job	2026-09-27T10:52:03.6799407Z Secret source: Actions
+hello	Set up job	2026-09-27T10:52:03.6800498Z Cache mode: write
+hello	Set up job	2026-09-27T10:52:03.6801175Z Prepare workflow directory
+hello	Set up job	2026-09-27T10:52:03.7144222Z Prepare all required actions
+hello	Set up job	2026-09-27T10:52:03.7192413Z Getting action download info
+hello	Set up job	2026-09-27T10:52:03.9618545Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+hello	Set up job	2026-09-27T10:52:04.1588576Z Complete job name: hello
+hello	Checkout	﻿2026-09-27T10:52:04.2428886Z ##[group]Run actions/checkout@v4
+hello	Checkout	2026-09-27T10:52:04.2429872Z with:
+hello	Checkout	2026-09-27T10:52:04.2430406Z   repository: neszaDev/spring-postgres-boilerplate
+hello	Checkout	2026-09-27T10:52:04.2434241Z   token: ***
+hello	Checkout	2026-09-27T10:52:04.2434703Z   ssh-strict: true
+hello	Checkout	2026-09-27T10:52:04.2435172Z   ssh-user: git
+hello	Checkout	2026-09-27T10:52:04.2435632Z   persist-credentials: true
+hello	Checkout	2026-09-27T10:52:04.2436135Z   clean: true
+hello	Checkout	2026-09-27T10:52:04.2436601Z   sparse-checkout-cone-mode: true
+hello	Checkout	2026-09-27T10:52:04.2437139Z   fetch-depth: 1
+hello	Checkout	2026-09-27T10:52:04.2437587Z   fetch-tags: false
+hello	Checkout	2026-09-27T10:52:04.2438046Z   show-progress: true
+hello	Checkout	2026-09-27T10:52:04.2438899Z   lfs: false
+hello	Checkout	2026-09-27T10:52:04.2439392Z   submodules: false
+hello	Checkout	2026-09-27T10:52:04.2439873Z   set-safe-directory: true
+hello	Checkout	2026-09-27T10:52:04.2440397Z   allow-unsafe-pr-checkout: false
+hello	Checkout	2026-09-27T10:52:04.2441174Z ##[endgroup]
+hello	Checkout	2026-09-27T10:52:04.3443690Z Syncing repository: neszaDev/spring-postgres-boilerplate
+hello	Checkout	2026-09-27T10:52:04.3446160Z ##[group]Getting Git version info
+hello	Checkout	2026-09-27T10:52:04.3447598Z Working directory is '/home/runner/work/spring-postgres-boilerplate/spring-postgres-boilerplate'
+hello	Checkout	2026-09-27T10:52:04.3449407Z [command]/usr/bin/git version
+hello	Checkout	2026-09-27T10:52:04.3512843Z git version 2.55.0
+hello	Checkout	2026-09-27T10:52:04.3544087Z ##[endgroup]
+hello	Checkout	2026-09-27T10:52:04.3551607Z Temporarily overriding HOME='/home/runner/work/_temp/96e5c003-b03f-45bc-8085-7d89fc832fcd' before making global git config changes
+hello	Checkout	2026-09-27T10:52:04.3553919Z Adding repository directory to the temporary git global config as a safe directory
+hello	Checkout	2026-09-27T10:52:04.3559536Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/spring-postgres-boilerplate/spring-postgres-boilerplate
+hello	Checkout	2026-09-27T10:52:04.3625360Z Deleting the contents of '/home/runner/work/spring-postgres-boilerplate/spring-postgres-boilerplate'
+hello	Checkout	2026-09-27T10:52:04.3629652Z ##[group]Initializing the repository
+hello	Checkout	2026-09-27T10:52:04.3634787Z [command]/usr/bin/git init /home/runner/work/spring-postgres-boilerplate/spring-postgres-boilerplate
+hello	Checkout	2026-09-27T10:52:04.3742332Z hint: Using 'master' as the name for the initial branch. This default branch name
+hello	Checkout	2026-09-27T10:52:04.3749015Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+hello	Checkout	2026-09-27T10:52:04.3751424Z hint: to use in all of your new repositories, which will suppress this warning,
+hello	Checkout	2026-09-27T10:52:04.3752970Z hint: call:
+hello	Checkout	2026-09-27T10:52:04.3754275Z hint:
+hello	Checkout	2026-09-27T10:52:04.3755284Z hint: 	git config --global init.defaultBranch <name>
+hello	Checkout	2026-09-27T10:52:04.3756453Z hint:
+hello	Checkout	2026-09-27T10:52:04.3757594Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hello	Checkout	2026-09-27T10:52:04.3759639Z hint: 'development'. The just-created branch can be renamed via this command:
+hello	Checkout	2026-09-27T10:52:04.3761110Z hint:
+hello	Checkout	2026-09-27T10:52:04.3762108Z hint: 	git branch -m <name>
+hello	Checkout	2026-09-27T10:52:04.3763041Z hint:
+hello	Checkout	2026-09-27T10:52:04.3764221Z hint: Disable this message with "git config set advice.defaultBranchName false"
+hello	Checkout	2026-09-27T10:52:04.3766352Z Initialized empty Git repository in /home/runner/work/spring-postgres-boilerplate/spring-postgres-boilerplate/.git/
+hello	Checkout	2026-09-27T10:52:04.3769918Z [command]/usr/bin/git remote add origin https://github.com/neszaDev/spring-postgres-boilerplate
+hello	Checkout	2026-09-27T10:52:04.3814075Z ##[endgroup]
+hello	Checkout	2026-09-27T10:52:04.3815340Z ##[group]Disabling automatic garbage collection
+hello	Checkout	2026-09-27T10:52:04.3817588Z [command]/usr/bin/git config --local gc.auto 0
+hello	Checkout	2026-09-27T10:52:04.3851098Z ##[endgroup]
+hello	Checkout	2026-09-27T10:52:04.3852193Z ##[group]Setting up auth
+hello	Checkout	2026-09-27T10:52:04.3857154Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+hello	Checkout	2026-09-27T10:52:04.3892905Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+hello	Checkout	2026-09-27T10:52:04.4256304Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+hello	Checkout	2026-09-27T10:52:04.4309585Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+hello	Checkout	2026-09-27T10:52:04.4543954Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+hello	Checkout	2026-09-27T10:52:04.4582646Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+hello	Checkout	2026-09-27T10:52:04.4823504Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+hello	Checkout	2026-09-27T10:52:04.4865502Z ##[endgroup]
+hello	Checkout	2026-09-27T10:52:04.4866394Z ##[group]Fetching the repository
+hello	Checkout	2026-09-27T10:52:04.4874767Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +aec1b5c236bfe1ca665e2347c06ba1d92111e860:refs/remotes/origin/ci/verify-debug
+hello	Checkout	2026-09-27T10:52:04.8467839Z From https://github.com/neszaDev/spring-postgres-boilerplate
+hello	Checkout	2026-09-27T10:52:04.8469947Z  * [new ref]         aec1b5c236bfe1ca665e2347c06ba1d92111e860 -> origin/ci/verify-debug
+hello	Checkout	2026-09-27T10:52:04.8473896Z ##[endgroup]
+hello	Checkout	2026-09-27T10:52:04.8475243Z ##[group]Determining the checkout info
+hello	Checkout	2026-09-27T10:52:04.8477089Z ##[endgroup]
+hello	Checkout	2026-09-27T10:52:04.8483969Z [command]/usr/bin/git sparse-checkout disable
+hello	Checkout	2026-09-27T10:52:04.8538087Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+hello	Checkout	2026-09-27T10:52:04.8574350Z ##[group]Checking out the ref
+hello	Checkout	2026-09-27T10:52:04.8579740Z [command]/usr/bin/git checkout --progress --force -B ci/verify-debug refs/remotes/origin/ci/verify-debug
+hello	Checkout	2026-09-27T10:52:04.8656408Z behavior, is not a valid attribute name: .gitattributes:1
+hello	Checkout	2026-09-27T10:52:04.8748832Z Switched to a new branch 'ci/verify-debug'
+hello	Checkout	2026-09-27T10:52:04.8755048Z branch 'ci/verify-debug' set up to track 'origin/ci/verify-debug'.
+hello	Checkout	2026-09-27T10:52:04.8761979Z ##[endgroup]
+hello	Checkout	2026-09-27T10:52:04.8809300Z [command]/usr/bin/git log -1 --format=%H
+hello	Checkout	2026-09-27T10:52:04.8838664Z aec1b5c236bfe1ca665e2347c06ba1d92111e860
+hello	Print info	﻿2026-09-27T10:52:04.9073473Z ##[group]Run echo "RUNNING SIMPLE CI TEST"
+hello	Print info	2026-09-27T10:52:04.9074264Z ^[[36;1mecho "RUNNING SIMPLE CI TEST"^[[0m
+hello	Print info	2026-09-27T10:52:04.9075120Z ^[[36;1mecho "Branch: $GITHUB_REF"^[[0m
+hello	Print info	2026-09-27T10:52:04.9075721Z ^[[36;1muname -a || true^[[0m
+hello	Print info	2026-09-27T10:52:04.9076263Z ^[[36;1mjava -version || true^[[0m
+hello	Print info	2026-09-27T10:52:04.9076841Z ^[[36;1mecho "Done"^[[0m
+hello	Print info	2026-09-27T10:52:04.9322315Z shell: /usr/bin/bash -e {0}
+hello	Print info	2026-09-27T10:52:04.9322945Z ##[endgroup]
+hello	Print info	2026-09-27T10:52:04.9436096Z RUNNING SIMPLE CI TEST
+hello	Print info	2026-09-27T10:52:04.9437018Z Branch: refs/heads/ci/verify-debug
+hello	Print info	2026-09-27T10:52:04.9446510Z Linux runnervmtr4k5 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+hello	Print info	2026-09-27T10:52:05.0388818Z openjdk version "17.0.20.1" 2026-08-18
+hello	Print info	2026-09-27T10:52:05.0391123Z OpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)
+hello	Print info	2026-09-27T10:52:05.0393244Z OpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)
+hello	Print info	2026-09-27T10:52:05.0443810Z Done
+hello	Post Checkout	﻿2026-09-27T10:52:05.0609961Z Post job cleanup.
+hello	Post Checkout	2026-09-27T10:52:05.1452792Z [command]/usr/bin/git version
+hello	Post Checkout	2026-09-27T10:52:05.1494805Z git version 2.55.0
+hello	Post Checkout	2026-09-27T10:52:05.1532850Z Temporarily overriding HOME='/home/runner/work/_temp/c3564226-ee19-42db-ab37-1d945ba585b4' before making global git config changes
+hello	Post Checkout	2026-09-27T10:52:05.1535570Z Adding repository directory to the temporary git global config as a safe directory
+hello	Post Checkout	2026-09-27T10:52:05.1539929Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/spring-postgres-boilerplate/spring-postgres-boilerplate
+hello	Post Checkout	2026-09-27T10:52:05.1578857Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+hello	Post Checkout	2026-09-27T10:52:05.1616861Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+hello	Post Checkout	2026-09-27T10:52:05.1885087Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+hello	Post Checkout	2026-09-27T10:52:05.1912136Z http.https://github.com/.extraheader
+hello	Post Checkout	2026-09-27T10:52:05.1924352Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+hello	Post Checkout	2026-09-27T10:52:05.1962333Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+hello	Post Checkout	2026-09-27T10:52:05.2232752Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+hello	Post Checkout	2026-09-27T10:52:05.2274480Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+hello	Complete job	﻿2026-09-27T10:52:05.2734630Z Cleaning up orphan processes
+hello	Complete job	2026-09-27T10:52:05.3266223Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
