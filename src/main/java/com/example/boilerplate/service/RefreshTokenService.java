@@ -1,4 +1,4 @@
-package com.example.boilerplate.service;
+﻿package com.example.boilerplate.service;
 
 import com.example.boilerplate.auth.dto.AuthTokensResponse;
 import com.example.boilerplate.model.RefreshToken;
@@ -59,7 +59,7 @@ public class RefreshTokenService {
       for (byte b : digest) { hex.append(String.format("%02x", b)); }
       String tokenHash = hex.toString();
       repo.findByTokenHashForUpdate(tokenHash).ifPresent(rt -> repo.delete(rt));
-    } catch (Exception e) { throw new RuntimeException(e); }
+    } catch (com.example.boilerplate.common.exception.InvalidRefreshTokenException e) { throw e; } catch (Exception e) { throw new RuntimeException(e); }
   }
 
   public String rotate(String oldToken) {
@@ -69,9 +69,9 @@ public class RefreshTokenService {
       StringBuilder hex = new StringBuilder();
       for (byte b : digest) { hex.append(String.format("%02x", b)); }
       String tokenHash = hex.toString();
-      RefreshToken existing = repo.findByTokenHashForUpdate(tokenHash).orElseThrow(() -> new IllegalArgumentException("Invalid refresh token"));
+      RefreshToken existing = repo.findByTokenHashForUpdate(tokenHash).orElseThrow(com.example.boilerplate.common.exception.InvalidRefreshTokenException::new);
       User user = existing.getUser();
-      repo.delete(existing);
+      repo.delete(existing);`n      // validate expiration`n      if (existing.getExpiresAt() != null && existing.getExpiresAt().isBefore(Instant.now())) {`n        // token expired - do not rotate`n        throw new com.example.boilerplate.common.exception.InvalidRefreshTokenException();`n      }
       // create new token
       byte[] bytes = new byte[48];
       secureRandom.nextBytes(bytes);
@@ -86,6 +86,6 @@ public class RefreshTokenService {
       rt.setExpiresAt(Instant.now().plus(refreshTtl));
       repo.save(rt);
       return token;
-    } catch (Exception e) { throw new RuntimeException(e); }
+    } catch (com.example.boilerplate.common.exception.InvalidRefreshTokenException e) { throw e; } catch (Exception e) { throw new RuntimeException(e); }
   }
 }
