@@ -1,5 +1,7 @@
-package com.example.boilerplate.user;
+﻿package com.example.boilerplate.user;
 
+
+import com.example.boilerplate.repository.UserRepository;
 import com.example.boilerplate.user.dto.UserResponse;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -23,5 +25,6 @@ public class UserService {
         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
   }
 }
+
 
 
