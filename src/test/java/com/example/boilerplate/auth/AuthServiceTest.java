@@ -1,4 +1,6 @@
-﻿
+﻿package ume.Project.CRMS.spring-postgres-boilerplate.src.test.java.com.example.boilerplate.auth;
+
+
 import com.example.boilerplate.service.AuthService;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -29,6 +31,7 @@ class AuthServiceTest {
     verifyNoMoreInteractions(encoder);
   }
 }
+
 
 
 
