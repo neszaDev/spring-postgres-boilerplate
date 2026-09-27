@@ -67,3 +67,8 @@ There is a helper script at `scripts/run-verify-skip-its.{sh,ps1}` which will tr
 ## Scheduled jobs
 - The app runs a daily cleanup of expired refresh tokens at 03:00 UTC via Spring Scheduling. Configure scheduling via Spring properties if needed.
 
+
+## Docker compose (local DB)
+- Start Postgres locally for manual testing: docker-compose up -d postgres (see docker-compose.yml).
+- When Docker is unavailable (Windows with Vanguard), skip integration tests and run mvn -DskipITs=true clean verify locally.
+
