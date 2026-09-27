@@ -1,4 +1,4 @@
-package com.example.boilerplate.service;
+﻿package com.example.boilerplate.service;
 
 import com.example.boilerplate.auth.dto.AuthTokensResponse;
 import com.example.boilerplate.auth.dto.LoginRequest;
@@ -64,7 +64,7 @@ public class AuthService {
         // enforce max active refresh tokens per user
         int max = jwtProperties.getMaxRefreshTokens();
         java.util.List<com.example.boilerplate.model.RefreshToken> existing = refreshTokenRepository.findByUserOrderByExpiresAtAsc(user);
-        if (existing != null && existing.size() >= max) {
+        if (max > 0 && existing != null && existing.size() >= max) {
           int toDelete = existing.size() - (max - 1);
           for (int i=0;i<toDelete;i++) {
             refreshTokenRepository.delete(existing.get(i));
