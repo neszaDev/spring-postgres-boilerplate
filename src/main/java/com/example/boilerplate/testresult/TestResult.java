@@ -1,7 +1,7 @@
-package com.example.boilerplate.testresult;
+﻿package com.example.boilerplate.testresult;
 
 import com.example.boilerplate.common.entity.AuditableEntity;
-import com.example.boilerplate.user.User;
+import com.example.boilerplate.model.User;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -71,3 +71,4 @@ public class TestResult extends AuditableEntity {
     return notes;
   }
 }
+
