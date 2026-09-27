@@ -1,6 +1,5 @@
-package com.example.boilerplate.auth;
-
-
+﻿
+import com.example.boilerplate.repository.RefreshTokenRepository;
 import com.example.boilerplate.service.RefreshTokenCleanupService;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
@@ -27,6 +26,7 @@ class RefreshTokenCleanupServiceTest {
     verify(repo, times(1)).deleteByExpiresAtBefore(org.mockito.ArgumentMatchers.any(Instant.class));
   }
 }
+
 
 
 

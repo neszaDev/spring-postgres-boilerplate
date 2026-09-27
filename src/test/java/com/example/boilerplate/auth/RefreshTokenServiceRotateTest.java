@@ -1,6 +1,5 @@
-package com.example.boilerplate.auth;
-
-
+﻿
+import com.example.boilerplate.security.JwtService;
 import com.example.boilerplate.service.RefreshTokenService;
 import com.example.boilerplate.common.exception.InvalidRefreshTokenException;
 import org.junit.jupiter.api.BeforeEach;
@@ -44,6 +43,7 @@ class RefreshTokenServiceRotateTest {
     verify(repo).delete(token);
   }
 }
+
 
 
 

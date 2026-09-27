@@ -1,5 +1,5 @@
-package com.example.boilerplate.service;
-
+﻿
+import com.example.boilerplate.config.JwtProperties;
 import com.example.boilerplate.security.JwtService;
 import com.example.boilerplate.model.User;
 import com.example.boilerplate.repository.RefreshTokenRepository;
@@ -31,7 +31,7 @@ public class AuthServiceTest {
         refreshTokenRepository = mock(RefreshTokenRepository.class);
         passwordEncoder = mock(PasswordEncoder.class);
         jwtService = mock(JwtService.class);
-        authService = new AuthService(userRepository, refreshTokenRepository, passwordEncoder, jwtService);
+        authService = new AuthService(userRepository, refreshTokenRepository, passwordEncoder, jwtService, jwtProperties);
     }
 
     @Test
@@ -72,4 +72,5 @@ public class AuthServiceTest {
         verify(refreshTokenRepository, times(1)).save(any());
     }
 }
+
 
