@@ -71,9 +71,8 @@ public class RefreshTokenService {
       String tokenHash = hex.toString();
       RefreshToken existing = repo.findByTokenHashForUpdate(tokenHash).orElseThrow(com.example.boilerplate.common.exception.InvalidRefreshTokenException::new);
       User user = existing.getUser();
-      repo.delete(existing);n      // validate expirationn      if (existing.getExpiresAt() != null && existing.getExpiresAt().isBefore(Instant.now())) {n        // token expired - do not rotaten        throw new com.example.boilerplate.common.exception.InvalidRefreshTokenException();n      }
-      // create new token
-      byte[] bytes = new byte[48];
+      repo.delete(existing);\r\\r\n\ \ \ \ \ \ // validate expiration\r\n\ \ \ \ \ \ if (existing.getExpiresAt() != null && existing.getExpiresAt().isBefore(Instant.now())) {\r\n\ \ \ \ \ \   // token expired - do not rotate\r\n\ \ \ \ \ \   throw new com.example.boilerplate.common.exception.InvalidRefreshTokenException();\r\\r\n\ \ \ \ \ \ }
+      // create new toke\r\n\ \ \ \ \ \  byte[] bytes = new byte[48];
       secureRandom.nextBytes(bytes);
       String token = Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
       byte[] digest2 = md.digest(token.getBytes(StandardCharsets.UTF_8));
@@ -89,4 +88,5 @@ public class RefreshTokenService {
     } catch (com.example.boilerplate.common.exception.InvalidRefreshTokenException e) { throw e; } catch (Exception e) { throw new RuntimeException(e); }
   }
 }
+
 
