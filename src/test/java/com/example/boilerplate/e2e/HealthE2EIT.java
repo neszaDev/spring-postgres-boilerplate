@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.e2e;
+package com.example.boilerplate.e2e;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

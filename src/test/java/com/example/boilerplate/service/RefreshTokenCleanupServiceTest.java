@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.service;
+package com.example.boilerplate.service;
 
 import com.example.boilerplate.service.RefreshTokenCleanupService;
 import com.example.boilerplate.repository.RefreshTokenRepository;
