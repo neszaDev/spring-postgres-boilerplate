@@ -74,7 +74,6 @@ public class AuthService {
                 .filter(u -> passwordEncoder.matches(rawPassword, u.getPasswordHash()))
                 .orElseThrow(() -> new IllegalArgumentException("Invalid credentials"));
     }
-}
 
     @Transactional(readOnly = true)
     public User validateRefreshToken(String token) throws Exception {
