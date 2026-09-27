@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.service;
+package com.example.boilerplate.service;
 
 import com.example.boilerplate.auth.dto.AuthTokensResponse;
 import com.example.boilerplate.model.RefreshToken;
@@ -96,5 +96,4 @@ public class RefreshTokenService {
     } catch (com.example.boilerplate.common.exception.InvalidRefreshTokenException e) { throw e; } catch (Exception e) { throw new RuntimeException(e); }
   }
 }
-
 
