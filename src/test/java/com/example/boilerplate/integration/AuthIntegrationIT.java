@@ -1,4 +1,5 @@
-﻿
+﻿package com.example.boilerplate.integration;
+
 import com.example.boilerplate.model.RefreshToken;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,4 +65,5 @@ public class AuthIntegrationIT {
         assertEquals("ok", r4.getBody().get("status"));
     }
 }
+
 

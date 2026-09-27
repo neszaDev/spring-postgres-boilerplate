@@ -1,4 +1,4 @@
-package com.example.boilerplate.e2e;
+﻿package com.example.boilerplate.e2e;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -37,3 +37,4 @@ public class HealthE2EIT {
     assertThat(resp.getBody()).contains("UP");
   }
 }
+

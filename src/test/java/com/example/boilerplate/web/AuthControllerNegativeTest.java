@@ -1,4 +1,5 @@
-﻿
+﻿package com.example.boilerplate.web;
+
 import com.example.boilerplate.model.RefreshToken;
 import com.example.boilerplate.model.User;
 import com.example.boilerplate.service.AuthService;
@@ -48,4 +49,5 @@ public class AuthControllerNegativeTest {
                 .andExpect(status().isBadRequest());
     }
 }
+
 

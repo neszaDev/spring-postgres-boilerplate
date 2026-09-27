@@ -1,5 +1,4 @@
-﻿package ume.Project.CRMS.spring-postgres-boilerplate.src.test.java.com.example.boilerplate.service;
-
+﻿package com.example.boilerplate.service;
 
 import com.example.boilerplate.config.JwtProperties;
 import com.example.boilerplate.security.JwtService;
@@ -74,6 +73,7 @@ public class AuthServiceTest {
         verify(refreshTokenRepository, times(1)).save(any());
     }
 }
+
 
 
 

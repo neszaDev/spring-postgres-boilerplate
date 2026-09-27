@@ -1,4 +1,4 @@
-package com.example.boilerplate.web;
+﻿package com.example.boilerplate.web;
 
 import com.example.boilerplate.model.User;
 import com.example.boilerplate.service.AuthService;
@@ -46,3 +46,4 @@ public class AuthControllerTest {
                 .andExpect(jsonPath("$.email").value("test@example.com"));
     }
 }
+

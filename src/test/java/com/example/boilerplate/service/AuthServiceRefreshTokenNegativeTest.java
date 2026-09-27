@@ -1,5 +1,4 @@
-﻿package ume.Project.CRMS.spring-postgres-boilerplate.src.test.java.com.example.boilerplate.service;
-
+﻿package com.example.boilerplate.service;
 
 import com.example.boilerplate.config.JwtProperties;
 import com.example.boilerplate.model.RefreshToken;
@@ -46,5 +45,6 @@ public class AuthServiceRefreshTokenNegativeTest {
     }
 
 }
+
 
 

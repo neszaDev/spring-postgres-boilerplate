@@ -1,4 +1,4 @@
-package com.example.boilerplate.repository;
+﻿package com.example.boilerplate.repository;
 
 import com.example.boilerplate.model.User;
 import org.junit.jupiter.api.Test;
@@ -30,3 +30,4 @@ public class UserRepositoryTest {
         assertEquals("Repo Test", found.get().getFullName());
     }
 }
+

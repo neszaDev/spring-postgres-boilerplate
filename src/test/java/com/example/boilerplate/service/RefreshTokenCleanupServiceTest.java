@@ -1,4 +1,5 @@
-﻿
+﻿package com.example.boilerplate.service;
+
 import com.example.boilerplate.service.RefreshTokenCleanupService;
 import com.example.boilerplate.repository.RefreshTokenRepository;
 import org.junit.jupiter.api.Test;
@@ -16,4 +17,5 @@ public class RefreshTokenCleanupServiceTest {
         Mockito.verify(repo).deleteByExpiresAtBefore(Mockito.any(Instant.class));
     }
 }
+
 
