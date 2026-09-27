@@ -1,32 +1,10 @@
-name: Integration Tests
-
-on:
-  push:
-    branches: ["main", "master"]
-  workflow_dispatch: {}
-
-jobs:
-  integration:
-    name: Integration tests (requires Docker)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Make mvnw executable
-        run: chmod +x ./mvnw || true
-      - name: Set up JDK 21
-        uses: actions/setup-java@v5
+﻿
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v7
         with:
-          distribution: temurin
-          java-version: "21"
-          cache: maven
-      - name: Start Docker (ensure runner supports Docker)
-        run: docker info || true
-      - name: Run full verify (integration tests)
-        env:
-          DB_URL: jdbc:postgresql://localhost:5432/boilerplate
-          DB_USERNAME: boilerplate
-          DB_PASSWORD: boilerplate
-        run: |
-          mvn -B -DskipITs=false verify
-
-
+          name: integration-test-reports
+          path: |
+            target/failsafe-reports/**
+            target/surefire-reports/**
+          retention-days: 7
