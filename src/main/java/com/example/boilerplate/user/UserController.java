@@ -1,6 +1,6 @@
 package com.example.boilerplate.user;
 
-import com.example.boilerplate.model.dto.UserResponse;
+import com.example.boilerplate.user.dto.UserResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,5 +18,6 @@ public class UserController {
     return service.currentUser(authentication.getName());
   }
 }
+
 
 

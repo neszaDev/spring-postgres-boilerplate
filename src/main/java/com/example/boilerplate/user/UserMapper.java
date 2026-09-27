@@ -1,6 +1,6 @@
 package com.example.boilerplate.user;
 
-import com.example.boilerplate.model.dto.UserResponse;
+import com.example.boilerplate.user.dto.UserResponse;
 import com.example.boilerplate.model.User;
 import  org.mapstruct.Mapper;
 
@@ -8,5 +8,6 @@ import  org.mapstruct.Mapper;
 public interface UserMapper {
   UserResponse toResponse(User user);
 }
+
 
 
