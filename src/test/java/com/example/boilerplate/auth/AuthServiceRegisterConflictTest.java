@@ -1,5 +1,5 @@
-package com.example.boilerplate.auth;
-
+﻿
+import com.example.boilerplate.service.AuthService;
 import com.example.boilerplate.common.exception.ConflictException;
 import com.example.boilerplate.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,6 +35,7 @@ class AuthServiceRegisterConflictTest {
     verify(users).existsByEmail(anyString());
   }
 }
+
 
 
 
