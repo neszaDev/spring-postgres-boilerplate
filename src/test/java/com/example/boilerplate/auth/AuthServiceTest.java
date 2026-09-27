@@ -1,6 +1,5 @@
-package com.example.boilerplate.auth;
-
-
+﻿
+import com.example.boilerplate.repository.RefreshTokenRepository;
 import com.example.boilerplate.service.AuthService;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -31,6 +30,7 @@ class AuthServiceTest {
     verifyNoMoreInteractions(encoder);
   }
 }
+
 
 
 
