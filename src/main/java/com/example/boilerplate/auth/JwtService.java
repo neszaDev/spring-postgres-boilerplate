@@ -1,49 +1,65 @@
-package com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
-import com.example.boilerplate.user.User;
+import com.example.boilerplate.config.JwtProperties;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
-import java.nio.charset.StandardCharsets;
-import java.time.*;
-import java.util.*;
-import javax.crypto.SecretKey;
-import org.springframework.beans.factory.annotation.Value;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
+import java.nio.charset.StandardCharsets;
+import java.security.Key;
+import java.util.Date;
 
 @Service
 public class JwtService {
-  private final SecretKey key;
-  private final Duration ttl;
+    private static final Logger log = LoggerFactory.getLogger(JwtService.class);
+    private final JwtProperties properties;
+    private Key hmacKey;
 
-  public JwtService(
-      @Value("${app.security.jwt.secret}") String secret,
-      @Value("${app.security.jwt.access-token-ttl}") Duration ttl) {
-    if (secret == null || secret.getBytes(java.nio.charset.StandardCharsets.UTF_8).length < 32) {
-      throw new IllegalStateException(
-          "JWT secret must be at least 32 bytes long; set app.security.jwt.secret appropriately.");
+    public JwtService(JwtProperties properties) {
+        this.properties = properties;
     }
-    this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
-    this.ttl = ttl;
-  }
 
-  public String issue(User user) {
-    Instant now = Instant.now();
-    Date issued = Date.from(now);
-    Date exp = Date.from(now.plus(ttl));
-    return Jwts.builder()
-        .setSubject(user.getEmail())
-        .claim("role", user.getRole().name())
-        .setIssuedAt(issued)
-        .setExpiration(exp)
-        .signWith(SignatureAlgorithm.HS256, key)
-        .compact();
-  }
+    @PostConstruct
+    public void init() {
+        String secret = properties.getSecret();
+        if (secret == null || secret.isBlank()) {
+            log.error("JWT secret is not set. Set environment variable JWT_SECRET or configure app.security.jwt.secret");
+            throw new IllegalStateException("JWT secret not configured");
+        }
+        if ("00000000000000000000000000000000".equals(secret) || secret.length() < 32) {
+            log.error("JWT secret is insecure or too short. Provide a secure random 32+ character secret in app.security.jwt.secret");
+            throw new IllegalStateException("JWT secret missing or invalid (too short or default placeholder)");
+        }
 
-  public long expiresInSeconds() {
-    return ttl.toSeconds();
-  }
+        this.hmacKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+        log.info("JWT service initialized with secure key (length={}).", secret.length());
+    }
 
-  public Claims parse(String token) {
-    return Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
-  }
+    public String generateToken(String subject, long ttlMillis) {
+        long now = System.currentTimeMillis();
+        Date exp = new Date(now + ttlMillis);
+        return Jwts.builder()
+                .setSubject(subject)
+                .setIssuedAt(new Date(now))
+                .setExpiration(exp)
+                .signWith(hmacKey, SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    public Jws<Claims> parseToken(String token) throws JwtException {
+        return Jwts.parserBuilder().setSigningKey(hmacKey).build().parseClaimsJws(token);
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            parseToken(token);
+            return true;
+        } catch (JwtException e) {
+            log.debug("JWT validation failed: {}", e.getMessage());
+            return false;
+        }
+    }
 }
