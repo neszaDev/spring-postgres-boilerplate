@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.integration;
+package com.example.boilerplate.integration;
 
 import com.example.boilerplate.auth.dto.AuthTokensResponse;
 import com.example.boilerplate.auth.dto.RegisterRequest;
