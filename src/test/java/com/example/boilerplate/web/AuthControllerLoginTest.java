@@ -1,4 +1,4 @@
-package com.example.boilerplate.web;
+﻿package com.example.boilerplate.web;
 
 import com.example.boilerplate.model.RefreshToken;
 import com.example.boilerplate.model.User;
@@ -39,7 +39,7 @@ public class AuthControllerLoginTest {
         User u = new User(); u.setId(5L); u.setEmail("test@ex.com");
         when(authService.authenticate(anyString(), anyString())).thenReturn(u);
         when(authService.loginAccessToken(any(User.class), any(Long.class))).thenReturn("access-token-abc");
-        when(authService.createRefreshToken(any(User.class), any(Integer.class))).thenReturn("refresh-token-xyz");
+        when(authService.createRefreshToken(any(User.class), any(Long.class))).thenReturn("refresh-token-xyz");
 
         String body = "{\"email\":\"test@ex.com\",\"password\":\"pw\"}";
         mvc.perform(post("/auth/login").contentType(MediaType.APPLICATION_JSON).content(body))
@@ -53,7 +53,7 @@ public class AuthControllerLoginTest {
         User u = new User(); u.setId(6L); u.setEmail("r@ex.com");
         when(authService.validateRefreshToken(anyString())).thenReturn(u);
         when(authService.loginAccessToken(any(User.class), any(Long.class))).thenReturn("new-access");
-        when(authService.rotateRefreshToken(anyString(), any(Integer.class))).thenReturn("new-refresh");
+        when(authService.rotateRefreshToken(anyString(), any(Long.class))).thenReturn("new-refresh");
 
         String body = "{\"refreshToken\":\"old-token\"}";
         mvc.perform(post("/auth/refresh").contentType(MediaType.APPLICATION_JSON).content(body))
@@ -73,5 +73,6 @@ public class AuthControllerLoginTest {
         verify(authService).revokeRefreshToken("old-token");
     }
 }
+
 
 
