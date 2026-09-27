@@ -1,4 +1,4 @@
-package com.example.boilerplate.service;
+﻿package com.example.boilerplate.service;
 
 import com.example.boilerplate.config.JwtProperties;
 import com.example.boilerplate.security.JwtService;
@@ -23,6 +23,7 @@ public class AuthServiceTest {
     private RefreshTokenRepository refreshTokenRepository;
     private PasswordEncoder passwordEncoder;
     private JwtService jwtService;
+    private JwtProperties jwtProperties;
 
     private AuthService authService;
 
@@ -32,6 +33,7 @@ public class AuthServiceTest {
         refreshTokenRepository = mock(RefreshTokenRepository.class);
         passwordEncoder = mock(PasswordEncoder.class);
         jwtService = mock(JwtService.class);
+        jwtProperties = mock(JwtProperties.class);
         authService = new AuthService(userRepository, refreshTokenRepository, passwordEncoder, jwtService, jwtProperties);
     }
 
@@ -73,8 +75,3 @@ public class AuthServiceTest {
         verify(refreshTokenRepository, times(1)).save(any());
     }
 }
-
-
-
-
-
