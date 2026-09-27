@@ -20,3 +20,12 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y maven
       - name: Build (skip ITs)
         run: mvn -DskipITs=true -B clean verify
+
+      - name: Upload verify test reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: verify-test-reports
+          path: |
+            target/surefire-reports/**
+          retention-days: 7
