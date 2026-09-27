@@ -1,4 +1,6 @@
-﻿
+﻿package ume.Project.CRMS.spring-postgres-boilerplate.src.test.java.com.example.boilerplate.auth;
+
+
 import com.example.boilerplate.security.JwtService;
 import com.example.boilerplate.service.RefreshTokenService;
 import static org.mockito.Mockito.*;
@@ -55,6 +57,8 @@ class RefreshTokenServiceTest {
   }
 
 }
+
+
 
 
 

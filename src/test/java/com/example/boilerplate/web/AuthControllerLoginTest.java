@@ -1,5 +1,5 @@
-package com.example.boilerplate.web;
-
+﻿
+import com.example.boilerplate.model.RefreshToken;
 import com.example.boilerplate.model.User;
 import com.example.boilerplate.service.AuthService;
 import com.example.boilerplate.repository.UserRepository;
@@ -72,3 +72,4 @@ public class AuthControllerLoginTest {
         verify(authService).revokeRefreshToken("old-token");
     }
 }
+
