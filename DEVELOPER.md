@@ -43,3 +43,18 @@ Notes
 ## Required environment variables
 See docs/env.md for the full list and examples.
 
+## Local build & tests
+
+- Run unit tests: `mvn test`
+- Full local build (skip integration tests): `mvn -DskipITs=true clean verify`
+  - If `./mvnw` fails on Windows, use system `mvn` (install Maven or use the `./.maven-dist` copy if available).
+
+## Running with Maven wrapper fallback
+
+There is a helper script at `scripts/run-verify-skip-its.{sh,ps1}` which will try `./mvnw` first and fall back to `mvn`.
+
+## CI
+
+- CI uses JDK 21. Ensure `JAVA_HOME` is set to a JDK 21-compatible distribution locally when reproducing CI.
+- Integration tests (Testcontainers) run only in CI on GitHub Actions (`.github/workflows/integration.yml`). Local machines without Docker should skip integration tests using `-DskipITs=true`.
+
