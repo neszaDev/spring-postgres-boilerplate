@@ -1,4 +1,4 @@
-package com.example.boilerplate.testresult;
+﻿package com.example.boilerplate.testresult;
 
 import com.example.boilerplate.common.entity.AuditableEntity;
 import com.example.boilerplate.model.User;
@@ -71,4 +71,5 @@ public class TestResult extends AuditableEntity {
     return notes;
   }
 }
+
 

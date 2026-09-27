@@ -5,7 +5,7 @@ import com.example.boilerplate.model.RefreshToken;
 import com.example.boilerplate.model.User;
 import com.example.boilerplate.repository.RefreshTokenRepository;
 import com.example.boilerplate.repository.UserRepository;
-import org.springframework.security.crypto.password.PasswordEncoder;`nimport org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.crypto.password.PasswordEncoder;nimport org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.example.boilerplate.config.JwtProperties;
@@ -185,5 +185,6 @@ public class AuthService {
         } catch (Exception e) { return 30L; }
     }
 }
+
 
 
