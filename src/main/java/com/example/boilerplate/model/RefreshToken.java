@@ -1,45 +1,66 @@
 package com.example.boilerplate.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
-
 import java.time.Instant;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "refresh_tokens")
 public class RefreshToken {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Long id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "user_id", nullable = false)
+  private User user;
 
-    @Column(name = "token_hash", nullable = false, length = 64, unique = true)
-    private String tokenHash;
+  @Column(name = "token_hash", nullable = false, length = 64, unique = true)
+  private String tokenHash;
 
-    @Column(name = "expires_at", nullable = false)
-    private Instant expiresAt;
+  @Column(name = "expires_at", nullable = false)
+  private Instant expiresAt;
 
-    @CreationTimestamp
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
+  @CreationTimestamp
+  @Column(name = "created_at", nullable = false, updatable = false)
+  private Instant createdAt;
 
-    public RefreshToken() {}
+  public RefreshToken() {}
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+  public Long getId() {
+    return id;
+  }
 
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public String getTokenHash() { return tokenHash; }
-    public void setTokenHash(String tokenHash) { this.tokenHash = tokenHash; }
+  public User getUser() {
+    return user;
+  }
 
-    public Instant getExpiresAt() { return expiresAt; }
-    public void setExpiresAt(Instant expiresAt) { this.expiresAt = expiresAt; }
+  public void setUser(User user) {
+    this.user = user;
+  }
 
-    public Instant getCreatedAt() { return createdAt; }
+  public String getTokenHash() {
+    return tokenHash;
+  }
+
+  public void setTokenHash(String tokenHash) {
+    this.tokenHash = tokenHash;
+  }
+
+  public Instant getExpiresAt() {
+    return expiresAt;
+  }
+
+  public void setExpiresAt(Instant expiresAt) {
+    this.expiresAt = expiresAt;
+  }
+
+  public Instant getCreatedAt() {
+    return createdAt;
+  }
 }

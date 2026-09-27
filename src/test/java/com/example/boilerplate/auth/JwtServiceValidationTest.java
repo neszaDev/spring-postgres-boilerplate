@@ -1,10 +1,10 @@
 package com.example.boilerplate.auth;
 
-import com.example.boilerplate.security.JwtService;
-import com.example.boilerplate.config.JwtProperties;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import com.example.boilerplate.config.JwtProperties;
+import com.example.boilerplate.security.JwtService;
+import org.junit.jupiter.api.Test;
 
 class JwtServiceValidationTest {
 
@@ -16,5 +16,3 @@ class JwtServiceValidationTest {
     assertThrows(IllegalStateException.class, svc::init);
   }
 }
-
-

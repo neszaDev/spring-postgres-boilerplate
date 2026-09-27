@@ -1,21 +1,17 @@
 package com.example.boilerplate.service;
 
-import com.example.boilerplate.service.RefreshTokenCleanupService;
 import com.example.boilerplate.repository.RefreshTokenRepository;
+import java.time.Instant;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.time.Instant;
-
 public class RefreshTokenCleanupServiceTest {
 
-    @Test
-    void cleanup_calls_repository() {
-        RefreshTokenRepository repo = Mockito.mock(RefreshTokenRepository.class);
-        RefreshTokenCleanupService svc = new RefreshTokenCleanupService(repo);
-        svc.cleanupExpiredRefreshTokens();
-        Mockito.verify(repo).deleteByExpiresAtBefore(Mockito.any(Instant.class));
-    }
+  @Test
+  void cleanup_calls_repository() {
+    RefreshTokenRepository repo = Mockito.mock(RefreshTokenRepository.class);
+    RefreshTokenCleanupService svc = new RefreshTokenCleanupService(repo);
+    svc.cleanupExpiredRefreshTokens();
+    Mockito.verify(repo).deleteByExpiresAtBefore(Mockito.any(Instant.class));
+  }
 }
-
-

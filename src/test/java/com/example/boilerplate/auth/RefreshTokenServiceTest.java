@@ -1,14 +1,11 @@
-
-import com.example.boilerplate.model.RefreshToken;
-import com.example.boilerplate.security.JwtService;
-import com.example.boilerplate.service.RefreshTokenService;
-import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import com.example.boilerplate.auth.dto.AuthTokensResponse;
+import com.example.boilerplate.model.RefreshToken;
 import com.example.boilerplate.model.User;
+import com.example.boilerplate.service.RefreshTokenService;
 import java.time.Duration;
-import java.time.Instant;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -54,14 +51,4 @@ class RefreshTokenServiceTest {
     verify(repo).findByTokenHashForUpdate(anyString());
     verify(repo).delete(t);
   }
-
 }
-
-
-
-
-
-
-
-
-

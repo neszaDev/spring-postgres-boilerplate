@@ -11,7 +11,6 @@ import java.security.SecureRandom;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Base64;
-import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -56,10 +55,16 @@ public class RefreshTokenService {
       MessageDigest md = MessageDigest.getInstance("SHA-256");
       byte[] digest = md.digest(raw.getBytes(StandardCharsets.UTF_8));
       StringBuilder hex = new StringBuilder();
-      for (byte b : digest) { hex.append(String.format("%02x", b)); }
+      for (byte b : digest) {
+        hex.append(String.format("%02x", b));
+      }
       String tokenHash = hex.toString();
       repo.findByTokenHashForUpdate(tokenHash).ifPresent(rt -> repo.delete(rt));
-    } catch (com.example.boilerplate.common.exception.InvalidRefreshTokenException e) { throw e; } catch (Exception e) { throw new RuntimeException(e); }
+    } catch (com.example.boilerplate.common.exception.InvalidRefreshTokenException e) {
+      throw e;
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 
   public String rotate(String oldToken) {
@@ -67,9 +72,14 @@ public class RefreshTokenService {
       MessageDigest md = MessageDigest.getInstance("SHA-256");
       byte[] digest = md.digest(oldToken.getBytes(StandardCharsets.UTF_8));
       StringBuilder hex = new StringBuilder();
-      for (byte b : digest) { hex.append(String.format("%02x", b)); }
+      for (byte b : digest) {
+        hex.append(String.format("%02x", b));
+      }
       String tokenHash = hex.toString();
-      RefreshToken existing = repo.findByTokenHashForUpdate(tokenHash).orElseThrow(com.example.boilerplate.common.exception.InvalidRefreshTokenException::new);
+      RefreshToken existing =
+          repo.findByTokenHashForUpdate(tokenHash)
+              .orElseThrow(
+                  com.example.boilerplate.common.exception.InvalidRefreshTokenException::new);
       User user = existing.getUser();
       repo.delete(existing);
       // validate expiration
@@ -78,12 +88,14 @@ public class RefreshTokenService {
         throw new com.example.boilerplate.common.exception.InvalidRefreshTokenException();
       }
       // create new toke
-       byte[] bytes = new byte[48];
+      byte[] bytes = new byte[48];
       secureRandom.nextBytes(bytes);
       String token = Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
       byte[] digest2 = md.digest(token.getBytes(StandardCharsets.UTF_8));
       StringBuilder hex2 = new StringBuilder();
-      for (byte b : digest2) { hex2.append(String.format("%02x", b)); }
+      for (byte b : digest2) {
+        hex2.append(String.format("%02x", b));
+      }
       String tokenHash2 = hex2.toString();
       RefreshToken rt = new RefreshToken();
       rt.setUser(user);
@@ -91,7 +103,10 @@ public class RefreshTokenService {
       rt.setExpiresAt(Instant.now().plus(refreshTtl));
       repo.save(rt);
       return token;
-    } catch (com.example.boilerplate.common.exception.InvalidRefreshTokenException e) { throw e; } catch (Exception e) { throw new RuntimeException(e); }
+    } catch (com.example.boilerplate.common.exception.InvalidRefreshTokenException e) {
+      throw e;
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 }
-

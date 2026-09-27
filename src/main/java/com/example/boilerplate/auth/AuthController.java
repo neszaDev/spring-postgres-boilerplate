@@ -37,4 +37,3 @@ public class AuthController {
     service.logout(r.refreshToken());
   }
 }
-

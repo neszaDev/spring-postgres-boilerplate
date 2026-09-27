@@ -18,6 +18,3 @@ public class UserController {
     return service.currentUser(authentication.getName());
   }
 }
-
-
-

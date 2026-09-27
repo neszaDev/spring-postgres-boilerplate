@@ -1,19 +1,17 @@
 package com.example.boilerplate.auth;
 
-import com.example.boilerplate.repository.RefreshTokenRepository;
-import com.example.boilerplate.service.AuthService;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import com.example.boilerplate.common.exception.ConflictException;
-import com.example.boilerplate.repository.UserRepository;
+import com.example.boilerplate.service.AuthService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
 
 class AuthServiceRegisterConflictTest {
   @Mock com.example.boilerplate.repository.UserRepository users;
@@ -37,11 +35,3 @@ class AuthServiceRegisterConflictTest {
     verify(users).existsByEmail(anyString());
   }
 }
-
-
-
-
-
-
-
-
