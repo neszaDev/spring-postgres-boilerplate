@@ -49,7 +49,6 @@ public class GlobalExceptionHandler {
     return error(HttpStatus.BAD_REQUEST, e.getMessage(), r, Map.of());
   }
 
-  }
 
   @ExceptionHandler(Exception.class)
   ResponseEntity<ApiError> generic(Exception e, HttpServletRequest r) {
