@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.web;
+package com.example.boilerplate.web;
 
 import com.example.boilerplate.model.RefreshToken;
 import com.example.boilerplate.model.User;
