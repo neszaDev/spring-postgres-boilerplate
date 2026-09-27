@@ -1,5 +1,5 @@
-package com.example.boilerplate.service;
-
+﻿
+import com.example.boilerplate.config.JwtProperties;
 import com.example.boilerplate.model.RefreshToken;
 import com.example.boilerplate.model.User;
 import com.example.boilerplate.repository.RefreshTokenRepository;
@@ -25,7 +25,7 @@ public class AuthServiceRefreshTokenNegativeTest {
     void setUp() {
         userRepository = mock(UserRepository.class);
         refreshTokenRepository = mock(RefreshTokenRepository.class);
-        authService = new AuthService(userRepository, refreshTokenRepository, null, null);
+        authService = new AuthService(userRepository, refreshTokenRepository, null, null, jwtProperties);
     }
 
     @Test
@@ -44,3 +44,4 @@ public class AuthServiceRefreshTokenNegativeTest {
     }
 
 }
+
