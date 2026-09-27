@@ -1,4 +1,4 @@
-﻿package ume.Project.CRMS.spring-postgres-boilerplate.src.test.java.com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 
 import com.example.boilerplate.service.RefreshTokenCleanupService;
@@ -27,6 +27,7 @@ class RefreshTokenCleanupServiceTest {
     verify(repo, times(1)).deleteByExpiresAtBefore(org.mockito.ArgumentMatchers.any(Instant.class));
   }
 }
+
 
 
 

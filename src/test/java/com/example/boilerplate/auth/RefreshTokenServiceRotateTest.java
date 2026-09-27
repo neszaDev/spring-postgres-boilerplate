@@ -1,4 +1,4 @@
-﻿package ume.Project.CRMS.spring-postgres-boilerplate.src.test.java.com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 
 import com.example.boilerplate.service.RefreshTokenService;
@@ -44,6 +44,7 @@ class RefreshTokenServiceRotateTest {
     verify(repo).delete(token);
   }
 }
+
 
 
 
