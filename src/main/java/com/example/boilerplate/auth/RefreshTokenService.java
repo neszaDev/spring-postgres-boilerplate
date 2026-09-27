@@ -1,4 +1,4 @@
-package com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 import com.example.boilerplate.auth.dto.AuthTokensResponse;
 import com.example.boilerplate.common.exception.InvalidRefreshTokenException;
@@ -50,8 +50,7 @@ public class RefreshTokenService {
   }
 
   private AuthTokensResponse response(User user, String refresh) {
-    return new AuthTokensResponse(
-        jwt.issue(user), "Bearer", jwt.expiresInSeconds(), refresh, ttl.toSeconds());
+    return new AuthTokensResponse(jwt.generateToken(user.getId().toString(), 15*60*1000L), " Bearer\, 15*60, refresh, ttl.toSeconds());
   }
 
   private String generate() {
@@ -70,3 +69,4 @@ public class RefreshTokenService {
     }
   }
 }
+
