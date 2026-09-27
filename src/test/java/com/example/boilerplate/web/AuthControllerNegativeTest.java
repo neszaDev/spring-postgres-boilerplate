@@ -17,6 +17,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc(addFilters = false)
+@TestPropertySource(properties = 'spring.main.allow-bean-definition-overriding=true')
 @WebMvcTest(AuthController.class)
 public class AuthControllerNegativeTest {
     @Autowired
