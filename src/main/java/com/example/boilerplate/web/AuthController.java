@@ -36,3 +36,20 @@ public class AuthController {
         return ResponseEntity.ok(Map.of("accessToken", access, "refreshToken", refresh));
     }
 
+    @PostMapping("/refresh")
+    public ResponseEntity<?> refresh(@RequestBody Map<String,String> body) throws Exception {
+        String refreshToken = body.get("refreshToken");
+        if (refreshToken == null) return ResponseEntity.badRequest().body(Map.of("error","missing refreshToken"));
+        User user = authService.validateRefreshToken(refreshToken);
+        String access = authService.loginAccessToken(user, 15 * 60 * 1000);
+        String newRefresh = authService.rotateRefreshToken(refreshToken, 30);
+        return ResponseEntity.ok(Map.of("accessToken", access, "refreshToken", newRefresh));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(@RequestBody Map<String,String> body) throws Exception {
+        String refreshToken = body.get("refreshToken");
+        if (refreshToken != null) { authService.revokeRefreshToken(refreshToken); }
+        return ResponseEntity.ok(Map.of("status","ok"));
+    }
+}
