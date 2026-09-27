@@ -1,6 +1,6 @@
-package com.example.boilerplate.config;
+﻿package com.example.boilerplate.config;
 
-import com.example.boilerplate.auth.JwtService;
+import com.example.boilerplate.security.JwtService;
 import com.example.boilerplate.model.User;
 import com.example.boilerplate.repository.UserRepository;
 import io.jsonwebtoken.Claims;
@@ -86,3 +86,4 @@ public class SecurityConfig {
         }
     }
 }
+

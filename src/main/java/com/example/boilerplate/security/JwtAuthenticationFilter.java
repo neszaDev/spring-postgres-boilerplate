@@ -1,6 +1,6 @@
-package com.example.boilerplate.security;
+﻿package com.example.boilerplate.security;
 
-import com.example.boilerplate.auth.JwtService;
+import com.example.boilerplate.security.JwtService;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -40,3 +40,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     chain.doFilter(req, res);
   }
 }
+

@@ -1,6 +1,6 @@
-package com.example.boilerplate.service;
+﻿package com.example.boilerplate.service;
 
-import com.example.boilerplate.auth.JwtService;
+import com.example.boilerplate.security.JwtService;
 import com.example.boilerplate.model.RefreshToken;
 import com.example.boilerplate.model.User;
 import com.example.boilerplate.repository.RefreshTokenRepository;
@@ -114,3 +114,4 @@ public class AuthService {
         refreshTokenRepository.findByTokenHash(tokenHash).ifPresent(rt -> refreshTokenRepository.delete(rt));
     }
 }
+

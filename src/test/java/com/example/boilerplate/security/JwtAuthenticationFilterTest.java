@@ -1,6 +1,6 @@
-package com.example.boilerplate.security;
+﻿package com.example.boilerplate.security;
 
-import com.example.boilerplate.auth.JwtService;
+import com.example.boilerplate.security.JwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.junit.jupiter.api.AfterEach;
@@ -53,3 +53,4 @@ class JwtAuthenticationFilterTest {
     assertEquals(1, auth.getAuthorities().size());
   }
 }
+
