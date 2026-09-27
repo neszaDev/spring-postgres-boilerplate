@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.service;
+package com.example.boilerplate.service;
 
 import com.example.boilerplate.auth.dto.AuthTokensResponse;
 import com.example.boilerplate.auth.dto.LoginRequest;
@@ -60,7 +60,17 @@ public class AuthService {
   }
 
   @Transactional
-  public String createRefreshToken(User user, long ttlDays) throws Exception {\n        // enforce max active refresh tokens per user\n        int max = jwtProperties.getMaxRefreshTokens();\n        java.util.List<com.example.boilerplate.model.RefreshToken> existing = refreshTokenRepository.findByUserOrderByExpiresAtAsc(user);\n        if (existing != null && existing.size() >= max) {\n          int toDelete = existing.size() - (max - 1);\n          for (int i=0;i<toDelete;i++) {\n            refreshTokenRepository.delete(existing.get(i));\n          }\n        }\n    byte[] bytes = new byte[48];
+  public String createRefreshToken(User user, long ttlDays) throws Exception {
+        // enforce max active refresh tokens per user
+        int max = jwtProperties.getMaxRefreshTokens();
+        java.util.List<com.example.boilerplate.model.RefreshToken> existing = refreshTokenRepository.findByUserOrderByExpiresAtAsc(user);
+        if (existing != null && existing.size() >= max) {
+          int toDelete = existing.size() - (max - 1);
+          for (int i=0;i<toDelete;i++) {
+            refreshTokenRepository.delete(existing.get(i));
+          }
+        }
+    byte[] bytes = new byte[48];
     secureRandom.nextBytes(bytes);
     String token = Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
     MessageDigest md = MessageDigest.getInstance("SHA-256");
