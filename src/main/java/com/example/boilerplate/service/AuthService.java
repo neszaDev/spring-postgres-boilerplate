@@ -1,4 +1,4 @@
-package com.example.boilerplate.service;
+﻿package com.example.boilerplate.service;
 
 import com.example.boilerplate.security.JwtService;
 import com.example.boilerplate.model.RefreshToken;
@@ -43,8 +43,8 @@ public class AuthService {
 
     @Transactional
     public User register(String email, String rawPassword, String fullName) {
-        if (userRepository.findByEmail(email).isPresent()) {
-            throw new IllegalArgumentException("Email already registered");
+        if (userRepository.existsByEmail(email)) {
+            throw new com.example.boilerplate.common.exception.ConflictException("Email already registered");
         }
         User user = new User();
         user.setEmail(email);
