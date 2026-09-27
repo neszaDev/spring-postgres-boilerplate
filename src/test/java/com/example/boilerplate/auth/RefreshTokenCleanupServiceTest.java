@@ -1,4 +1,4 @@
-package com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
@@ -10,7 +10,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 class RefreshTokenCleanupServiceTest {
-  @Mock RefreshTokenRepository repo;
+  @Mock com.example.boilerplate.repository.RefreshTokenRepository repo;
   RefreshTokenCleanupService svc;
 
   @BeforeEach
@@ -25,3 +25,4 @@ class RefreshTokenCleanupServiceTest {
     verify(repo, times(1)).deleteByExpiresAtBefore(org.mockito.ArgumentMatchers.any(Instant.class));
   }
 }
+

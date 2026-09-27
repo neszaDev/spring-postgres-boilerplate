@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @ExtendWith(org.mockito.junit.jupiter.MockitoExtension.class)
 class AuthServiceTest {
-  @Mock UserRepository users;\n  @Mock PasswordEncoder encoder;\n  @Mock com.example.boilerplate.repository.RefreshTokenRepository refreshTokenRepository;\n  @Mock com.example.boilerplate.security.JwtService jwtService;\n  @Mock com.example.boilerplate.config.JwtProperties jwtProperties;
+  @Mock com.example.boilerplate.repository.UserRepository users;\n  @Mock PasswordEncoder encoder;\n  @Mock com.example.boilerplate.repository.RefreshTokenRepository refreshTokenRepository;\n  @Mock com.example.boilerplate.security.JwtService jwtService;\n  @Mock com.example.boilerplate.config.JwtProperties jwtProperties;
 
   @Test
   void rejectsDuplicateEmail() {
@@ -25,5 +25,6 @@ class AuthServiceTest {
     verifyNoMoreInteractions(encoder);
   }
 }
+
 
 
