@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.common.exception;
+package com.example.boilerplate.common.exception;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.Instant;
