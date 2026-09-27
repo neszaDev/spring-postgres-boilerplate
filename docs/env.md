@@ -1,23 +1,23 @@
-# Environment variables
+﻿# Environment Variables
 
-This project is environment-driven. The following environment variables are referenced in the configuration and must be set in production.
+This project reads configuration from environment variables. The most commonly required variables are:
 
-- DB_URL — JDBC URL for Postgres (e.g. `jdbc:postgresql://localhost:5432/boilerplate`)
-- DB_USERNAME — database username (e.g. `boilerplate`)
-- DB_PASSWORD — database password
-- JWT_SECRET — HMAC secret for signing JWTs (must be at least 32 bytes)
-- CORS_ALLOWED_ORIGINS — allowed CORS origins (comma-separated or `*` for permissive)
-- PORT — server port (default 8080)
-- JWT_ACCESS_TOKEN_TTL — ISO-8601 duration for access tokens (default `PT15M`)
-- REFRESH_TOKEN_TTL — ISO-8601 duration for refresh tokens (default `P30D`)
+- `DB_URL` - JDBC connection string for the database. Default: `jdbc:postgresql://localhost:5432/boilerplate`
+- `DB_USERNAME` - Database user name. Default: `boilerplate`
+- `DB_PASSWORD` - Database password. Default: `boilerplate`
 
-Examples:
+Security / JWT
+- `JWT_SECRET` - Primary HMAC secret for signing JWTs (required for non-test profiles). Provide a secure 32+ character secret. Example: on Linux/macOS `export JWT_SECRET=$(openssl rand -hex 32)`.
 
-```bash
-export DB_URL="jdbc:postgresql://localhost:5432/boilerplate"
-export DB_USERNAME=boilerplate
-export DB_PASSWORD=boilerplate
-export JWT_SECRET="really-strong-secret-at-least-32-bytes-long"
-```
+Spring profiles
+- `SPRING_PROFILES_ACTIVE` - Activate a Spring profile (`local`, `dev`, `test`, `prod`, ...).
 
-Do not commit real secrets into the repository.
+CI / Testcontainers
+- CI sets up a Postgres instance for integration tests; local developers who cannot run Docker should use the `-DskipITs=true` flag when running `mvn verify`.
+
+Other settings
+- `PORT` - Server port (default 8080)
+- `CORS_ALLOWED_ORIGINS` - Comma-separated list of allowed CORS origins.
+
+Notes
+- Do not store production secrets in plaintext in the repository. Use CI secrets for GitHub Actions and environment/secret managers for deployments.

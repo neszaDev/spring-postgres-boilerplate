@@ -149,3 +149,10 @@ Local testing and build shortcuts
 - Run unit tests: `mvn test` or `./mvnw test`.
 - Full build without integration tests (useful when Docker is unavailable): `mvn clean verify -DskipITs` or `./mvnw clean verify -DskipITs`.
 - Integration tests (Testcontainers) are run in CI and require Docker when run locally.
+
+## Quickstart
+
+- Run unit tests: `mvn test`
+- Full local build (skip integration tests): `mvn -DskipITs=true clean verify`
+
+See `DEVELOPER.md` for developer setup details and `docs/env.md` for environment variable descriptions.
