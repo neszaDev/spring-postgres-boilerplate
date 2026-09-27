@@ -39,7 +39,7 @@ class JwtAuthenticationFilterTest {
     claims.setSubject("me@example.com");
     claims.put("role", "USER");
 
-    when(jwt.parse(anyString())).thenReturn(claims);
+    when(jwt.parseToken(anyString())).thenReturn(new io.jsonwebtoken.Jws<Claims>() { public Claims getBody(){ return claims; } public io.jsonwebtoken.JwsHeader getHeader(){ return null; } public String getSignature(){ return ""; } });
 
     MockHttpServletRequest req = new MockHttpServletRequest();
     req.addHeader("Authorization", "Bearer token");
