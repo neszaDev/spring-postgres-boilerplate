@@ -1,4 +1,4 @@
-package com.example.boilerplate.config;
+﻿package com.example.boilerplate.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -42,8 +42,7 @@ public String getSecret() {
     return refreshTokenTtl;
   }
 
-  
+  public void setRefreshTokenTtl(String refreshTokenTtl) {
     this.refreshTokenTtl = refreshTokenTtl;
   }
 }
-
