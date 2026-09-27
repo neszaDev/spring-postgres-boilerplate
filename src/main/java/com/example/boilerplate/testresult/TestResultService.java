@@ -1,8 +1,8 @@
-package com.example.boilerplate.testresult;
+﻿package com.example.boilerplate.testresult;
 
 import com.example.boilerplate.common.exception.NotFoundException;
 import com.example.boilerplate.testresult.dto.*;
-import com.example.boilerplate.user.*;
+import com.example.boilerplate.model.*;
 import java.util.*;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -81,3 +81,4 @@ public class TestResultService {
         r.getUpdatedAt());
   }
 }
+

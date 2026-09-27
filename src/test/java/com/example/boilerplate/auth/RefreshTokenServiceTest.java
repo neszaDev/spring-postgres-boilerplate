@@ -1,10 +1,10 @@
-package com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.boilerplate.auth.dto.AuthTokensResponse;
-import com.example.boilerplate.user.User;
+import com.example.boilerplate.model.User;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Optional;
