@@ -1,4 +1,4 @@
-package com.example.boilerplate.security;
+﻿package com.example.boilerplate.security;
 
 import com.example.boilerplate.security.JwtService;
 import io.jsonwebtoken.JwtException;
@@ -9,10 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
-
-@Component
-public class JwtAuthenticationFilter extends OncePerRequestFilter {
+import org.springframework.web.filter.OncePerRequestFilter;\npublic class JwtAuthenticationFilter extends OncePerRequestFilter {
   private final JwtService jwt;
 
   public JwtAuthenticationFilter(JwtService jwt) {
@@ -40,4 +37,5 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     chain.doFilter(req, res);
   }
 }
+
 
