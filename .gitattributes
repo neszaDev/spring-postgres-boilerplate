@@ -1,9 +1,23 @@
-# Force LF for shell scripts
-*.sh text eol=lf
-scripts/* text eol=lf
-mvnw text eol=lf
+﻿# Set default behavior, auto-detect text files
+* text=auto
+
+# Force LF for source and text files to avoid CRLF/BOM issues on Windows
 *.java text eol=lf
+*.xml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.properties text eol=lf
+*.sh text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
 
-*.yml eol=lf
+# Do not treat binary files as text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.zip binary
+*.jar binary
 
-*.java eol=lf
+# Ensure workflows use LF
+.github/** text eol=lf
