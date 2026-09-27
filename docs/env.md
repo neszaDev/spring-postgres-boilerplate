@@ -1,4 +1,4 @@
-﻿# Environment variables
+# Environment variables
 
 This project is environment-driven. The following environment variables are referenced in the configuration and must be set in production.
 

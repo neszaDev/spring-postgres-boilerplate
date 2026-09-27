@@ -1,4 +1,4 @@
-﻿# Release checklist
+# Release checklist
 
 Before tagging a release (e.g. `v0.1.0`) ensure all checks pass:
 
