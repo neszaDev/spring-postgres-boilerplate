@@ -9,7 +9,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;\npublic class JwtAuthenticationFilter extends OncePerRequestFilter {
+import org.springframework.web.filter.OncePerRequestFilter;
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
   private final JwtService jwt;
 
   public JwtAuthenticationFilter(JwtService jwt) {
