@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.config;
+package com.example.boilerplate.config;
 
 import com.example.boilerplate.model.User;
 import com.example.boilerplate.repository.UserRepository;
