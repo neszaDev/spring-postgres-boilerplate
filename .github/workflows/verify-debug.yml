@@ -1,4 +1,4 @@
-name: Verify Debug
+﻿name: Verify Debug
 
 on:
   workflow_dispatch:
@@ -20,11 +20,16 @@ jobs:
       - name: Run verbose Verify (skip ITs)
         run: |
           mvn -X -e -DskipITs=true -B clean verify 2>&1 | tee mvn-verify-debug.log || true
+      - name: Save dependency tree for Flyway
+        run: |
+          mvn -DskipITs=true -DskipTests dependency:tree -Dincludes=org.flywaydb:flyway-core,org.flywaydb:flyway-postgresql -DoutputFile=flyway-deps.txt || true
       - name: Upload verbose log
         uses: actions/upload-artifact@v4
         with:
           name: verify-debug-logs
-          path: mvn-verify-debug.log
+          path: |
+            mvn-verify-debug.log
+            flyway-deps.txt
       - name: Upload test reports (if any)
         if: always()
         uses: actions/upload-artifact@v4
