@@ -1,4 +1,4 @@
-package com.example.boilerplate.config;
+﻿package com.example.boilerplate.config;
 
 import com.example.boilerplate.model.User;
 import com.example.boilerplate.repository.UserRepository;
@@ -24,7 +24,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-@Configuration
+@Configuration("appConfigSecurity")
 public class SecurityConfig {
   private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
 
@@ -101,3 +101,4 @@ public class SecurityConfig {
     }
   }
 }
+
