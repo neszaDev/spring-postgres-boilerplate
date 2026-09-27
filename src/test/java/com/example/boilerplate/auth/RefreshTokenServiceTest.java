@@ -1,4 +1,4 @@
-package com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.*;
 
 class RefreshTokenServiceTest {
-  @Mock RefreshTokenRepository repo;
-  @Mock JwtService jwt;
+  @Mock com.example.boilerplate.repository.RefreshTokenRepository repo;
+  @Mock com.example.boilerplate.security.JwtService jwt;
 
   RefreshTokenService svc;
 
@@ -54,3 +54,4 @@ class RefreshTokenServiceTest {
   }
 
 }
+

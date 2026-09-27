@@ -1,4 +1,4 @@
-package com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 import com.example.boilerplate.common.exception.InvalidRefreshTokenException;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,8 +15,8 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 class RefreshTokenServiceRotateTest {
-  @Mock RefreshTokenRepository repo;
-  @Mock JwtService jwt;
+  @Mock com.example.boilerplate.repository.RefreshTokenRepository repo;
+  @Mock com.example.boilerplate.security.JwtService jwt;
 
   RefreshTokenService svc;
 
@@ -42,3 +42,4 @@ class RefreshTokenServiceRotateTest {
     verify(repo).delete(token);
   }
 }
+

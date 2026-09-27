@@ -14,7 +14,7 @@ import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 
 class AuthServiceRegisterConflictTest {
-  @Mock UserRepository users;\n  @Mock PasswordEncoder encoder;\n  @Mock com.example.boilerplate.repository.RefreshTokenRepository refreshTokenRepository;\n  @Mock com.example.boilerplate.security.JwtService jwtService;\n  @Mock com.example.boilerplate.config.JwtProperties jwtProperties;\n  AuthService service;
+  @Mock com.example.boilerplate.repository.UserRepository users;\n  @Mock PasswordEncoder encoder;\n  @Mock com.example.boilerplate.repository.RefreshTokenRepository refreshTokenRepository;\n  @Mock com.example.boilerplate.security.JwtService jwtService;\n  @Mock com.example.boilerplate.config.JwtProperties jwtProperties;\n  AuthService service;
 
   @BeforeEach
   void init() {
@@ -30,4 +30,5 @@ class AuthServiceRegisterConflictTest {
     verify(users).existsByEmail(anyString());
   }
 }
+
 
