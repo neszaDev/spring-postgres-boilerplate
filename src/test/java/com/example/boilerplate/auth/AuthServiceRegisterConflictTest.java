@@ -1,4 +1,6 @@
-﻿
+﻿package ume.Project.CRMS.spring-postgres-boilerplate.src.test.java.com.example.boilerplate.auth;
+
+
 import com.example.boilerplate.service.AuthService;
 import com.example.boilerplate.common.exception.ConflictException;
 import com.example.boilerplate.repository.UserRepository;
@@ -35,6 +37,7 @@ class AuthServiceRegisterConflictTest {
     verify(users).existsByEmail(anyString());
   }
 }
+
 
 
 
