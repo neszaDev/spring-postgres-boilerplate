@@ -1,14 +1,14 @@
+﻿package com.example.boilerplate.service;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
-import com.example.boilerplate.security.JwtService;
-import com.example.boilerplate.config.JwtProperties;
-import com.example.boilerplate.config.JwtProperties;
 import com.example.boilerplate.model.RefreshToken;
 import com.example.boilerplate.model.User;
 import com.example.boilerplate.repository.RefreshTokenRepository;
 import com.example.boilerplate.repository.UserRepository;
+import com.example.boilerplate.security.JwtService;
+import com.example.boilerplate.config.JwtProperties;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.Instant;
 import java.util.Optional;
@@ -23,14 +23,18 @@ public class AuthServiceRefreshTokenNegativeTest {
     private UserRepository userRepository;
     private RefreshTokenRepository refreshTokenRepository;
     private PasswordEncoder encoder;
-    private com.example.boilerplate.security.JwtService jwt;
-    private com.example.boilerplate.config.JwtProperties jwtProperties;
-    private com.example.boilerplate.service.AuthService authService;
+    private JwtService jwt;
+    private JwtProperties jwtProperties;
     private AuthService authService;
 
     @BeforeEach
     void setUp() {
-        userRepository = mock(UserRepository.class);`n        refreshTokenRepository = mock(RefreshTokenRepository.class);`n        encoder = mock(PasswordEncoder.class);`n        jwt = mock(com.example.boilerplate.security.JwtService.class);`n        jwtProperties = mock(com.example.boilerplate.config.JwtProperties.class);`n        authService = new AuthService(userRepository, refreshTokenRepository, encoder, jwt, jwtProperties);
+        userRepository = mock(UserRepository.class);
+        refreshTokenRepository = mock(RefreshTokenRepository.class);
+        encoder = mock(PasswordEncoder.class);
+        jwt = mock(JwtService.class);
+        jwtProperties = mock(JwtProperties.class);
+        authService = new AuthService(userRepository, refreshTokenRepository, encoder, jwt, jwtProperties);
     }
 
     @Test
@@ -49,7 +53,3 @@ public class AuthServiceRefreshTokenNegativeTest {
     }
 
 }
-
-
-
-
