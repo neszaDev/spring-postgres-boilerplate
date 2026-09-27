@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install Maven
         run: sudo apt-get update && sudo apt-get install -y maven
+      - name: Strip UTF-8 BOM from Java files
+        run: |
+          find . -type f -name '*.java' -print0 | xargs -0 -r perl -i -0777 -pe 's/^\x{FEFF}//g'
       - name: Spotless check
         run: mvn -B spotless:check
 
@@ -34,7 +38,11 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles("**/pom.xml") }}
           restore-keys: |
             ${{ runner.os }}-m2-
+      - name: Install Maven
         run: sudo apt-get update && sudo apt-get install -y maven
+      - name: Strip UTF-8 BOM from Java files
+        run: |
+          find . -type f -name '*.java' -print0 | xargs -0 -r perl -i -0777 -pe 's/^\x{FEFF}//g'
       - name: Build and test
         env:
           DB_URL: jdbc:postgresql://localhost:5432/boilerplate
@@ -42,5 +50,3 @@ jobs:
           DB_PASSWORD: boilerplate
         run: |
           mvn -B -DskipITs=true clean verify
-
-
