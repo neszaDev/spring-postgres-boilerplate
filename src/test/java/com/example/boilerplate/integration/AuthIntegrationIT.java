@@ -1,4 +1,4 @@
-package com.example.boilerplate.integration;
+﻿package com.example.boilerplate.integration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,7 +21,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class AuthIntegrationIT {
   @Container
-  static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:17-alpine");
+  static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15-alpine");
 
   @DynamicPropertySource
   static void database(DynamicPropertyRegistry r) {
