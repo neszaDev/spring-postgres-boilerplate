@@ -1,4 +1,4 @@
-name: CI
+﻿name: CI
 
 on:
   push:
@@ -43,4 +43,5 @@ jobs:
           DB_USERNAME: boilerplate
           DB_PASSWORD: boilerplate
         run: |
-          mvn -B test
+          mvn -B -DskipITs=true clean verify
+
