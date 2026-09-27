@@ -75,3 +75,43 @@ public class AuthService {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid credentials"));
     }
 }
+
+    @Transactional(readOnly = true)
+    public User validateRefreshToken(String token) throws Exception {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] digest = md.digest(token.getBytes(StandardCharsets.UTF_8));
+        StringBuilder hex = new StringBuilder();
+        for (byte b : digest) { hex.append(String.format("%02x", b)); }
+        String tokenHash = hex.toString();
+        return refreshTokenRepository.findByTokenHash(tokenHash)
+                .filter(rt -> rt.getExpiresAt().isAfter(Instant.now()))
+                .map(RefreshToken::getUser)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid or expired refresh token"));
+    }
+
+    @Transactional
+    public String rotateRefreshToken(String oldToken, long ttlDays) throws Exception {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] digest = md.digest(oldToken.getBytes(StandardCharsets.UTF_8));
+        StringBuilder hex = new StringBuilder();
+        for (byte b : digest) { hex.append(String.format("%02x", b)); }
+        String tokenHash = hex.toString();
+        RefreshToken existing = refreshTokenRepository.findByTokenHash(tokenHash)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid refresh token"));
+        User user = existing.getUser();
+        // delete old token
+        refreshTokenRepository.delete(existing);
+        // create new token
+        return createRefreshToken(user, ttlDays);
+    }
+
+    @Transactional
+    public void revokeRefreshToken(String token) throws Exception {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] digest = md.digest(token.getBytes(StandardCharsets.UTF_8));
+        StringBuilder hex = new StringBuilder();
+        for (byte b : digest) { hex.append(String.format("%02x", b)); }
+        String tokenHash = hex.toString();
+        refreshTokenRepository.findByTokenHash(tokenHash).ifPresent(rt -> refreshTokenRepository.delete(rt));
+    }
+}
