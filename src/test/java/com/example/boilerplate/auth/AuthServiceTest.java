@@ -1,4 +1,4 @@
-package com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -13,7 +13,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @ExtendWith(org.mockito.junit.jupiter.MockitoExtension.class)
 class AuthServiceTest {
-  @Mock com.example.boilerplate.repository.UserRepository users;\n  @Mock PasswordEncoder encoder;\n  @Mock com.example.boilerplate.repository.RefreshTokenRepository refreshTokenRepository;\n  @Mock com.example.boilerplate.security.JwtService jwtService;\n  @Mock com.example.boilerplate.config.JwtProperties jwtProperties;
+  @Mock com.example.boilerplate.repository.UserRepository users;
+  @Mock PasswordEncoder encoder;
+  @Mock com.example.boilerplate.repository.RefreshTokenRepository refreshTokenRepository;
+  @Mock com.example.boilerplate.security.JwtService jwtService;
+  @Mock com.example.boilerplate.config.JwtProperties jwtProperties;
 
   @Test
   void rejectsDuplicateEmail() {
@@ -25,6 +29,7 @@ class AuthServiceTest {
     verifyNoMoreInteractions(encoder);
   }
 }
+
 
 
 
