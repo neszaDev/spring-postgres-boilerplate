@@ -1,4 +1,4 @@
-package com.example.boilerplate.service;
+﻿package com.example.boilerplate.service;
 
 import com.example.boilerplate.auth.dto.AuthTokensResponse;
 import com.example.boilerplate.model.RefreshToken;
@@ -18,7 +18,7 @@ public class RefreshTokenService {
   private final RefreshTokenRepository repo;
   private final JwtService jwt;
   private final Duration refreshTtl;
-  private final SecureRandom secureRandom = new SecureRandom();
+  private final SecureRandom secureRandom = new SecureRandom();\n\n  // configurable maximum number of active refresh tokens per user\n  private int maxRefreshTokens = 5;
 
   public RefreshTokenService(RefreshTokenRepository repo, JwtService jwt, Duration refreshTtl) {
     this.repo = repo;
@@ -110,3 +110,4 @@ public class RefreshTokenService {
     }
   }
 }
+
