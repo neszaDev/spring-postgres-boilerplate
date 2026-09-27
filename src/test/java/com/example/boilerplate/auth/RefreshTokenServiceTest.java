@@ -1,4 +1,4 @@
-package com.example.boilerplate.auth;rrnrrnimport static org.junit.jupiter.api.Assertions.*;
+package com.example.boilerplate.auth;rnrnimport static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import com.example.boilerplate.auth.dto.AuthTokensResponse;
