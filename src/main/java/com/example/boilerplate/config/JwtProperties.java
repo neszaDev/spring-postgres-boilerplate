@@ -10,9 +10,9 @@ public class JwtProperties {
   private String accessTokenTtl = "15m";
   private String refreshTokenTtl = "30d";
 
-  
   private int maxRefreshTokens = 5;
-public String getSecret() {
+
+  public String getSecret() {
     return secret;
   }
 
@@ -27,8 +27,6 @@ public String getSecret() {
   public void setAccessTokenTtl(String accessTokenTtl) {
     this.accessTokenTtl = accessTokenTtl;
   }
-
-  
 
   public int getMaxRefreshTokens() {
     return maxRefreshTokens;

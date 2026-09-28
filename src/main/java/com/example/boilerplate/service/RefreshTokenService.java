@@ -32,10 +32,13 @@ public class RefreshTokenService {
   public AuthTokensResponse create(User user) {
     try {
       // prune oldest tokens if exceeding maxRefreshTokens
-      java.util.List<com.example.boilerplate.model.RefreshToken> existing = repo.findByUserOrderByExpiresAtAsc(user);
+      java.util.List<com.example.boilerplate.model.RefreshToken> existing =
+          repo.findByUserOrderByExpiresAtAsc(user);
       if (existing != null && existing.size() >= maxRefreshTokens) {
         int toDelete = existing.size() - (maxRefreshTokens - 1);
-        for (int i=0;i<toDelete;i++) { repo.delete(existing.get(i)); }
+        for (int i = 0; i < toDelete; i++) {
+          repo.delete(existing.get(i));
+        }
       }
       byte[] bytes = new byte[48];
       secureRandom.nextBytes(bytes);
@@ -119,5 +122,3 @@ public class RefreshTokenService {
     }
   }
 }
-
-
