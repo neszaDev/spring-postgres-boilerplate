@@ -1,7 +1,24 @@
-target/
-.idea/
-.vscode/
+﻿# Java/Maven
+/target/
+/.mvn/wrapper/maven-wrapper.jar
+
+# IDEs
+/.idea/
 *.iml
-.env
-!.env.example
-*.log
+/.vscode/
+
+# temp and backups
+*.bak*
+*pre-reencode*
+*pre-remove-bom*
+*bak_bom*
+*bak_import*
+*bak_pkg*
+
+# OS
+.DS_Store
+Thumbs.db
+.mvn/wrapper/dists/
+.mvn/wrapper/dists/**
+temp-gh-logs/
+temp-gh-logs/**

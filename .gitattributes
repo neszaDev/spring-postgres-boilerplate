@@ -1,9 +1,12 @@
-# Force LF for shell scripts
-*.sh text eol=lf
-scripts/* text eol=lf
-mvnw text eol=lf
+﻿# Ensure consistent EOLs and encoding
 *.java text eol=lf
+*.xml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.properties text eol=lf
+*.sh text eol=lf
+*.ps1 text eol=crlf
+*.md text eol=lf
 
-*.yml eol=lf
-
-*.java eol=lf
+# Bin/external files
+.mvn/wrapper/dists/** -text

@@ -1,4 +1,4 @@
-﻿<#[
+<#[
 .SYNOPSIS
   Run tests (Windows PowerShell)
 #]>

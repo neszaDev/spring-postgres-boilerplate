@@ -1,10 +1,9 @@
-﻿name: CI
+name: CI
 
 on:
   push:
-    branches: ["main", "master"]
   pull_request:
-    branches: ["main", "master"]
+  workflow_dispatch:
 
 jobs:
   format-check:
@@ -12,10 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Make mvnw executable
-        run: chmod +x ./mvnw || true
+      - name: Install Maven
+        run: sudo apt-get update && sudo apt-get install -y maven
+      - name: Strip UTF-8 BOM from Java files
+        run: |
+          find . -type f -name '*.java' -print0 | xargs -0 -r perl -i -0777 -pe 's/^\x{FEFF}//g'
       - name: Spotless check
-        run: ./mvnw -B spotless:check
+        run: mvn -B spotless:check
 
   build:
     name: Build and test
@@ -36,13 +38,15 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles("**/pom.xml") }}
           restore-keys: |
             ${{ runner.os }}-m2-
-      - name: Make mvnw executable
-        run: chmod +x ./mvnw || true
+      - name: Install Maven
+        run: sudo apt-get update && sudo apt-get install -y maven
+      - name: Strip UTF-8 BOM from Java files
+        run: |
+          find . -type f -name '*.java' -print0 | xargs -0 -r perl -i -0777 -pe 's/^\x{FEFF}//g'
       - name: Build and test
         env:
           DB_URL: jdbc:postgresql://localhost:5432/boilerplate
           DB_USERNAME: boilerplate
           DB_PASSWORD: boilerplate
         run: |
-          ./mvnw -B test
-
+          mvn -B -DskipITs=true clean verify

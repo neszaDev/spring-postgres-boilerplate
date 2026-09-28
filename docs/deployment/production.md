@@ -1,4 +1,4 @@
-﻿# Production deployment notes
+# Production deployment notes
 
 Required environment variables (examples):
 

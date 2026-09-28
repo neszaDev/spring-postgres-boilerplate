@@ -1,0 +1,57 @@
+package com.example.boilerplate.auth;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+import com.example.boilerplate.auth.dto.AuthTokensResponse;
+import com.example.boilerplate.model.RefreshToken;
+import com.example.boilerplate.model.User;
+import com.example.boilerplate.service.RefreshTokenService;
+import java.time.Duration;
+import java.util.Optional;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.*;
+
+class RefreshTokenServiceTest {
+  @Mock com.example.boilerplate.repository.RefreshTokenRepository repo;
+  @Mock com.example.boilerplate.security.JwtService jwt;
+
+  RefreshTokenService svc;
+
+  @BeforeEach
+  void init() {
+    MockitoAnnotations.openMocks(this);
+    svc = new RefreshTokenService(repo, jwt, Duration.ofDays(30));
+  }
+
+  @Test
+  void create_savesAndReturnsTokens() {
+    User user = mock(User.class);
+    when(user.getId()).thenReturn(123L);
+
+    // simulate save returns a RefreshToken via repository.save (we don't verify persisted id)
+    when(repo.save(any())).thenAnswer(i -> i.getArgument(0));
+    when(jwt.generateToken(anyString(), anyLong())).thenReturn("jwt-token");
+
+    AuthTokensResponse r = svc.create(user);
+    assertNotNull(r);
+    assertEquals("jwt-token", r.accessToken());
+    assertNotNull(r.refreshToken());
+    verify(repo, atLeastOnce()).save(any());
+  }
+
+  @Test
+  void revoke_deletesIfPresent() {
+    String raw = "rawtoken";
+    RefreshToken t = mock(RefreshToken.class);
+    when(repo.findByTokenHashForUpdate(anyString())).thenReturn(Optional.of(t));
+    doNothing().when(repo).delete(t);
+
+    svc.revoke(raw);
+
+    verify(repo).findByTokenHashForUpdate(anyString());
+    verify(repo).delete(t);
+  }
+}
+

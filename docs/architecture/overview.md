@@ -1,4 +1,4 @@
-﻿# Architecture Overview
+# Architecture Overview
 
 See `ARCHITECTURE.md` for the full project architecture. This document highlights key components:
 

@@ -1,4 +1,4 @@
-﻿name: Integration Tests
+name: Integration Tests
 
 on:
   push:
@@ -30,3 +30,13 @@ jobs:
           ./mvnw -B -DskipITs=false verify
 
 
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: integration-test-reports
+          path: |
+            target/failsafe-reports/**
+            target/surefire-reports/**
+          retention-days: 7

@@ -1,5 +1,6 @@
 package com.example.boilerplate.user;
 
+import com.example.boilerplate.model.User;
 import com.example.boilerplate.user.dto.UserResponse;
 import org.mapstruct.Mapper;
 

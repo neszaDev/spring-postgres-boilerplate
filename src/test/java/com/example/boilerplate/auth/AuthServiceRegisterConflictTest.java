@@ -1,0 +1,37 @@
+package com.example.boilerplate.auth;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import com.example.boilerplate.common.exception.ConflictException;
+import com.example.boilerplate.service.AuthService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+class AuthServiceRegisterConflictTest {
+  @Mock com.example.boilerplate.repository.UserRepository users;
+  @Mock PasswordEncoder encoder;
+  @Mock com.example.boilerplate.repository.RefreshTokenRepository refreshTokenRepository;
+  @Mock com.example.boilerplate.security.JwtService jwtService;
+  @Mock com.example.boilerplate.config.JwtProperties jwtProperties;
+  AuthService service;
+
+  @BeforeEach
+  void init() {
+    MockitoAnnotations.openMocks(this);
+    service = new AuthService(users, refreshTokenRepository, encoder, jwtService, jwtProperties);
+  }
+
+  @Test
+  void register_whenEmailExists_throwsConflictException() {
+    when(users.existsByEmail(anyString())).thenReturn(true);
+    var req = new com.example.boilerplate.auth.dto.RegisterRequest("me@example.com", "pw");
+    assertThrows(ConflictException.class, () -> service.register(req));
+    verify(users).existsByEmail(anyString());
+  }
+}
