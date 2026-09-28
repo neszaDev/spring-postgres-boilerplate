@@ -1,0 +1,13 @@
+﻿*** Begin Patch
+*** Update File: src/main/java/com/example/boilerplate/security/JwtService.java
+@@
+-    } catch (JwtException e) {
+-      log.debug("JWT validation failed: {}", e.getMessage());
+-      return false;
+-    }
++    } catch (JwtException e) {
++      log.warn("JWT validation failed ({}): {}", e.getClass().getSimpleName(), e.getMessage());
++      log.debug("JWT validation exception: ", e);
++      return false;
++    }
+*** End Patch
