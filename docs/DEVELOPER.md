@@ -1,4 +1,4 @@
-﻿# Developer Guide
+# Developer Guide
 
 This document describes how to build, test and iterate on the project locally and what the CI does.
 

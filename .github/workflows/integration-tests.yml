@@ -1,4 +1,4 @@
-﻿name: Integration Tests (Testcontainers)
+name: Integration Tests (Testcontainers)
 
 on:
   push:
