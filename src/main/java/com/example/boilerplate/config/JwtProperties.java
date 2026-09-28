@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.config;
+package com.example.boilerplate.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
