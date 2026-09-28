@@ -1,4 +1,4 @@
-package com.example.boilerplate.security;
+﻿package com.example.boilerplate.security;
 
 import com.example.boilerplate.config.JwtProperties;
 import io.jsonwebtoken.*;
@@ -10,7 +10,7 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
+import org.springframework.core.env.Environment;`nimport org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,7 +21,7 @@ public class JwtService {
   private Key hmacKey;
 
   @Autowired
-  public JwtService(JwtProperties properties, Environment env) {
+  public JwtService([Qualifier("jwtProperties")] JwtProperties properties, Environment env) {
     this.properties = properties;
     this.env = env;
   }
@@ -96,3 +96,4 @@ public class JwtService {
     }
   }
 }
+
