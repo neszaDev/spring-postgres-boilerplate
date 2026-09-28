@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.example.boilerplate.security;
 
 import org.springframework.context.annotation.*;
@@ -42,5 +41,3 @@ public class SecurityConfig {
         .build();
   }
 }
-=======
->>>>>>> 7ffc93fdb55ace73c33f0cbba5f2a57ffd541b6f
