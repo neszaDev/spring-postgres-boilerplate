@@ -1,4 +1,4 @@
-package com.example.boilerplate.security;
+﻿package com.example.boilerplate.security;
 
 import org.springframework.context.annotation.*;
 import org.springframework.http.HttpMethod;
