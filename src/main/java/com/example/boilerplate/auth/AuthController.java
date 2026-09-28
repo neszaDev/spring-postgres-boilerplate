@@ -1,11 +1,12 @@
-package com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 import com.example.boilerplate.auth.dto.*;
+import com.example.boilerplate.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@RestController("authApiController")
 @RequestMapping("/api/v1/auth")
 public class AuthController {
   private final AuthService service;
@@ -16,23 +17,24 @@ public class AuthController {
 
   @PostMapping("/register")
   @ResponseStatus(HttpStatus.CREATED)
-  AuthTokensResponse register(@Valid @RequestBody RegisterRequest r) {
+  public AuthTokensResponse register(@Valid @RequestBody RegisterRequest r) throws Exception {
     return service.register(r);
   }
 
   @PostMapping("/login")
-  AuthTokensResponse login(@Valid @RequestBody LoginRequest r) {
+  public AuthTokensResponse login(@Valid @RequestBody LoginRequest r) throws Exception {
     return service.login(r);
   }
 
   @PostMapping("/refresh")
-  AuthTokensResponse refresh(@Valid @RequestBody RefreshTokenRequest r) {
+  public AuthTokensResponse refresh(@Valid @RequestBody RefreshTokenRequest r) throws Exception {
     return service.refresh(r.refreshToken());
   }
 
   @PostMapping("/logout")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  void logout(@Valid @RequestBody RefreshTokenRequest r) {
+  public void logout(@Valid @RequestBody RefreshTokenRequest r) throws Exception {
     service.logout(r.refreshToken());
   }
 }
+

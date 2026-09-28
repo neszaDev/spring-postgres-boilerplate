@@ -124,14 +124,14 @@ To generate a Maven wrapper locally: `mvn -N io.takari:maven:wrapper`
 Convenience scripts are provided under `./scripts` for Linux/macOS and PowerShell for Windows.
 
 - Unix/macOS:
-  - `./scripts/build.sh` — build the packaged jar (prefers `./mvnw` if present, falls back to `mvn`).
-  - `./scripts/test.sh` — run tests. Set `SKIP_INTEGRATION=true` to skip integration tests that may require Docker.
-  - `./scripts/db-reset.sh` — run Flyway `clean` + `migrate` (destructive). Prompts before running.
+  - `./scripts/build.sh` โ€” build the packaged jar (prefers `./mvnw` if present, falls back to `mvn`).
+  - `./scripts/test.sh` โ€” run tests. Set `SKIP_INTEGRATION=true` to skip integration tests that may require Docker.
+  - `./scripts/db-reset.sh` โ€” run Flyway `clean` + `migrate` (destructive). Prompts before running.
 
 - Windows PowerShell (from repository root):
-  - scripts\\build.ps1 — build the project.
-  - scripts\\test.ps1 — run tests.
-  - scripts\\db-reset.ps1 — reset the database using Flyway (destructive).
+  - scripts\\build.ps1 โ€” build the project.
+  - scripts\\test.ps1 โ€” run tests.
+  - scripts\\db-reset.ps1 โ€” reset the database using Flyway (destructive).
 
 The scripts prefer the Maven wrapper (`./mvnw` / `mvnw.cmd`) if present, otherwise they fall back to a system `mvn` installation. Generate the full Maven wrapper locally with:
 
@@ -149,3 +149,13 @@ Local testing and build shortcuts
 - Run unit tests: `mvn test` or `./mvnw test`.
 - Full build without integration tests (useful when Docker is unavailable): `mvn clean verify -DskipITs` or `./mvnw clean verify -DskipITs`.
 - Integration tests (Testcontainers) are run in CI and require Docker when run locally.
+
+## Quickstart
+
+- Run unit tests: `mvn test`
+- Full local build (skip integration tests): `mvn -DskipITs=true clean verify`
+
+See `DEVELOPER.md` for developer setup details and `docs/env.md` for environment variable descriptions.
+
+**Windows / OneDrive note:** If you use Windows+OneDrive (or any path containing non-ASCII characters) the Maven wrapper (./mvnw / mvnw.cmd) may fail to launch on some environments. Workarounds: use a system Maven (mvn), move the repo to an ASCII-only path (e.g. C:\dev\spring-postgres-boilerplate), or run in WSL. CI uses system Maven/JDK21 so builds are unaffected.
+

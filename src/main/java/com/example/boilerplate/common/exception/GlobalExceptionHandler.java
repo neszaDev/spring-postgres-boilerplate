@@ -44,6 +44,11 @@ public class GlobalExceptionHandler {
     return error(HttpStatus.BAD_REQUEST, "Validation failed", r, fields);
   }
 
+  @ExceptionHandler(IllegalArgumentException.class)
+  ResponseEntity<ApiError> badRequest(IllegalArgumentException e, HttpServletRequest r) {
+    return error(HttpStatus.BAD_REQUEST, e.getMessage(), r, Map.of());
+  }
+
   @ExceptionHandler(Exception.class)
   ResponseEntity<ApiError> generic(Exception e, HttpServletRequest r) {
     log.error("Unexpected server error", e);

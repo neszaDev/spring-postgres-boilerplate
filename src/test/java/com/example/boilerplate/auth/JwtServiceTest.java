@@ -2,21 +2,22 @@ package com.example.boilerplate.auth;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.example.boilerplate.user.User;
-import io.jsonwebtoken.Claims;
-import java.time.Duration;
+import com.example.boilerplate.config.JwtProperties;
+import com.example.boilerplate.security.JwtService;
 import org.junit.jupiter.api.Test;
 
-class JwtServiceTest {
+public class JwtServiceTest {
+
   @Test
-  void issueAndParseToken() {
-    String secret = "01234567890123456789012345678901"; // 32 bytes
-    JwtService svc = new JwtService(secret, Duration.ofMinutes(15));
-    User u = new User("me@example.com", "pw");
-    String token = svc.issue(u);
+  void generateAndValidateToken() throws Exception {
+    JwtProperties props = new JwtProperties();
+    props.setSecret("012345678901234567890123456789012345");
+    JwtService svc = new JwtService(props, null);
+    svc.init();
+    String token = svc.generateToken("sub123", 1000L * 60 * 60);
     assertNotNull(token);
-    Claims claims = svc.parse(token);
-    assertEquals("me@example.com", claims.getSubject());
-    assertEquals("USER", claims.get("role", String.class));
+    assertTrue(svc.validateToken(token));
+    var claims = svc.parseToken(token);
+    assertEquals("sub123", claims.getBody().getSubject());
   }
 }

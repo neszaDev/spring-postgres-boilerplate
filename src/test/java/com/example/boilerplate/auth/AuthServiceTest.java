@@ -5,7 +5,7 @@ import static org.mockito.Mockito.*;
 
 import com.example.boilerplate.auth.dto.RegisterRequest;
 import com.example.boilerplate.common.exception.ConflictException;
-import com.example.boilerplate.user.UserRepository;
+import com.example.boilerplate.service.AuthService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
@@ -13,14 +13,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @ExtendWith(org.mockito.junit.jupiter.MockitoExtension.class)
 class AuthServiceTest {
-  @Mock UserRepository users;
+  @Mock com.example.boilerplate.repository.UserRepository users;
   @Mock PasswordEncoder encoder;
-  @Mock RefreshTokenService refreshTokens;
+  @Mock com.example.boilerplate.repository.RefreshTokenRepository refreshTokenRepository;
+  @Mock com.example.boilerplate.security.JwtService jwtService;
+  @Mock com.example.boilerplate.config.JwtProperties jwtProperties;
 
   @Test
   void rejectsDuplicateEmail() {
     when(users.existsByEmail("a@example.com")).thenReturn(true);
-    var service = new AuthService(users, encoder, refreshTokens);
+    var service =
+        new AuthService(users, refreshTokenRepository, encoder, jwtService, jwtProperties);
     assertThrows(
         ConflictException.class,
         () -> service.register(new RegisterRequest("a@example.com", "a-long-enough-password")));
