@@ -42,7 +42,8 @@ public class JwtService {
     if ((secret == null || secret.isBlank())) {
       if (!isTest) {
         log.error(
-            "JWT secret is not set. Set environment variable JWT_SECRET or configure app.security.jwt.secret");
+            "JWT secret is not set. Set environment variable JWT_SECRET or configure"
+                + " app.security.jwt.secret");
         throw new IllegalStateException("JWT secret not configured");
       } else {
         log.warn("JWT secret not set but running with 'test' profile; skipping validation");
@@ -53,7 +54,8 @@ public class JwtService {
         && ("00000000000000000000000000000000".equals(secret)
             || (secret != null && secret.length() < 32))) {
       log.error(
-          "JWT secret is insecure or too short. Provide a secure random 32+ character secret in app.security.jwt.secret");
+          "JWT secret is insecure or too short. Provide a secure random 32+ character secret in"
+              + " app.security.jwt.secret");
       throw new IllegalStateException(
           "JWT secret missing or invalid (too short or default placeholder)");
     }
