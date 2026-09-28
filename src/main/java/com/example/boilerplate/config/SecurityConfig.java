@@ -36,8 +36,8 @@ public class SecurityConfig {
     this.userRepository = userRepository;
   }
 
-  @Bean
-  public PasswordEncoder passwordEncoder() {
+  @Bean("configPasswordEncoder")
+  public PasswordEncoder configPasswordEncoder() {
     return new BCryptPasswordEncoder();
   }
 
