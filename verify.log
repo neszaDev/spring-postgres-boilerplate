@@ -1,4 +1,4 @@
-﻿verify	Set up job	﻿2026-09-27T10:30:48.9310992Z Current runner version: '2.337.0'
+verify	Set up job	﻿2026-09-27T10:30:48.9310992Z Current runner version: '2.337.0'
 verify	Set up job	2026-09-27T10:30:48.9335927Z ##[group]Runner Image Provisioner
 verify	Set up job	2026-09-27T10:30:48.9336985Z Hosted Compute Agent
 verify	Set up job	2026-09-27T10:30:48.9337589Z Version: 20260828.587

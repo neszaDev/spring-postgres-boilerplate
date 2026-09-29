@@ -1,4 +1,4 @@
-﻿from xml.etree import ElementTree as ET
+from xml.etree import ElementTree as ET
 from pathlib import Path
 p=Path("pom.xml")
 ns = {"m":"http://maven.apache.org/POM/4.0.0"}

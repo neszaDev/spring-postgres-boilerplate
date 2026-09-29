@@ -1,4 +1,4 @@
-﻿import sys, os, re
+import sys, os, re
 root = os.getcwd()
 count=0
 fixed_files=[]

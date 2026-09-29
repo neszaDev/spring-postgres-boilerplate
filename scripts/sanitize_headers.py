@@ -1,4 +1,4 @@
-﻿import os,sys
+import os,sys
 files = [
   'src/main/java/com/example/boilerplate/config/JwtProperties.java',
   'src/main/java/com/example/boilerplate/security/JwtService.java',

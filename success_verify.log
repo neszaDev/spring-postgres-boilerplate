@@ -1,4 +1,4 @@
-﻿verify-debug	Set up job	﻿2026-09-27T10:30:49.1891239Z Current runner version: '2.337.0'
+verify-debug	Set up job	﻿2026-09-27T10:30:49.1891239Z Current runner version: '2.337.0'
 verify-debug	Set up job	2026-09-27T10:30:49.1917068Z ##[group]Runner Image Provisioner
 verify-debug	Set up job	2026-09-27T10:30:49.1918072Z Hosted Compute Agent
 verify-debug	Set up job	2026-09-27T10:30:49.1918701Z Version: 20260828.587

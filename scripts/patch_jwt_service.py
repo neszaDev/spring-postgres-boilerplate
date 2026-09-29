@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 p = Path('src/main/java/com/example/boilerplate/security/JwtService.java')
 s = p.read_text(encoding='utf-8')
 repl = '''    if ("00000000000000000000000000000000".equals(secret) || (secret != null && secret.length() < 32)) {

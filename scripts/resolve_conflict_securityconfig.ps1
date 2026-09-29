@@ -1,4 +1,4 @@
-﻿$path = Join-Path $env:REPO_ROOT 'src\main\java\com\example\boilerplate\security\SecurityConfig.java'
+$path = Join-Path $env:REPO_ROOT 'src\main\java\com\example\boilerplate\security\SecurityConfig.java'
 Write-Output "Resolving conflict in: $path"
 if (-not (Test-Path $path)) { Write-Output "File not found: $path"; exit 0 }
 $s = Get-Content -LiteralPath $path -Raw -Encoding UTF8

@@ -1,4 +1,4 @@
-﻿$path = "$env:REPO_ROOT\src\main\java\com\example\boilerplate\security\JwtService.java"
+$path = "$env:REPO_ROOT\src\main\java\com\example\boilerplate\security\JwtService.java"
 if (-not (Test-Path $path)) { Write-Output "File not found: $path"; exit 0 }
 $text = Get-Content -LiteralPath $path -Raw -Encoding UTF8
 if ($text -match 'Qualifier') { Write-Output 'JwtService already qualified'; exit 0 }

@@ -1,4 +1,4 @@
-﻿# PowerShell helper: run maven from .maven-dist, then mvnw, then system mvn
+# PowerShell helper: run maven from .maven-dist, then mvnw, then system mvn
 param([Parameter(ValueFromRemainingArguments=$true)] $args)
 $root = Resolve-Path -Path "$(Split-Path -Path $PSScriptRoot -Parent)" | Select-Object -ExpandProperty Path
 $mavenDist = Get-ChildItem -Path (Join-Path $root '.maven-dist') -Directory -ErrorAction SilentlyContinue | Select-Object -First 1
