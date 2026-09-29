@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 base = Path.cwd()
 sec = base / 'src/main/java/com/example/boilerplate/security/SecurityConfig.java'
 if sec.exists():

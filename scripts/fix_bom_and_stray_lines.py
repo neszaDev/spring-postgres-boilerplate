@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Safe cleanup script: removes UTF-8 BOM at start of files and removes stray single-character
 lines that are only a backslash (\) or a backtick (`). Targets common text files that caused

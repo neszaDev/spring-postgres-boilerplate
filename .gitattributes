@@ -1,4 +1,4 @@
-﻿# Ensure consistent EOLs and encoding
+# Ensure consistent EOLs and encoding
 *.java text eol=lf
 *.xml text eol=lf
 *.yml text eol=lf

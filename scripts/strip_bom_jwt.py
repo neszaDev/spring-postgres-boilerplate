@@ -1,4 +1,4 @@
-﻿from pathlib import Path
+from pathlib import Path
 p = Path('src/main/java/com/example/boilerplate/security/JwtService.java')
 if not p.exists():
     print('MISSING', p)
