@@ -36,9 +36,22 @@ public class TestFlywayConfig {
           ScriptUtils.executeSqlScript(conn, r);
         } catch (ScriptStatementFailedException ex) {
           // H2 does not support certain Postgres-specific statements (e.g., CREATE EXTENSION pgcrypto).
-          // For test profile using H2, skip statements that fail due to dialect differences.
+          // If running against H2 and the failure looks like a CREATE EXTENSION issue, try a fallback:
+          // remove CREATE EXTENSION lines and re-run the script so the rest of the SQL can apply.
           if (isH2 && ex.getMessage() != null && ex.getMessage().toLowerCase().contains("create extension")) {
-            log.warn("Skipping script {} on H2: {}", r.getFilename(), ex.getMessage());
+            try {
+              log.warn("Detected Postgres-only statement in {}: {}; attempting to apply remainder of script on H2", r.getFilename(), ex.getMessage());
+              String content = new String(r.getInputStream().readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+              String filtered = content.replaceAll("(?i)^\\s*CREATE\\s+EXTENSION.*$\\n?", "");
+              java.io.File tmp = java.io.File.createTempFile("flyway-", ".sql");
+              java.nio.file.Files.writeString(tmp.toPath(), filtered, java.nio.charset.StandardCharsets.UTF_8);
+              tmp.deleteOnExit();
+              org.springframework.core.io.FileSystemResource fr = new org.springframework.core.io.FileSystemResource(tmp);
+              ScriptUtils.executeSqlScript(conn, fr);
+            } catch (Exception ex2) {
+              log.error("Fallback execution of filtered script {} failed: {}", r.getFilename(), ex2.getMessage());
+              throw ex2 instanceof RuntimeException ? (RuntimeException) ex2 : new RuntimeException(ex2);
+            }
             continue;
           }
           throw ex;
