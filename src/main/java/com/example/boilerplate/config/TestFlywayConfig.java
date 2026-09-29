@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.config;
+package com.example.boilerplate.config;
 
 import javax.sql.DataSource;
 import org.flywaydb.core.Flyway;
