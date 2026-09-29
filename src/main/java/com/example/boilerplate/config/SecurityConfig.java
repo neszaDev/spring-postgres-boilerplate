@@ -37,11 +37,8 @@ public class SecurityConfig {
     this.userRepository = userRepository;
   }
 
-  @Bean
-  @ConditionalOnMissingBean(org.springframework.security.crypto.password.PasswordEncoder.class)
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
+  // PasswordEncoder bean is provided by com.example.boilerplate.security.SecurityConfig
+  // to avoid duplicate bean-definition issues across configuration classes.
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
