@@ -1,6 +1,6 @@
-﻿spring:
+spring:
   flyway:
-    enabled: true
+    enabled: false
     locations: classpath:db/migration
   jpa:
     defer-datasource-initialization: true
