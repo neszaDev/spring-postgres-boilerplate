@@ -61,15 +61,16 @@ public class AuthService {
 
   @Transactional
   public String createRefreshToken(User user, long ttlDays) throws Exception {
-        // enforce max active refresh tokens per user
-        int max = jwtProperties.getMaxRefreshTokens();
-        java.util.List<com.example.boilerplate.model.RefreshToken> existing = refreshTokenRepository.findByUserOrderByExpiresAtAsc(user);
-        if (max > 0 && existing != null && existing.size() >= max) {
-          int toDelete = existing.size() - (max - 1);
-          for (int i=0;i<toDelete;i++) {
-            refreshTokenRepository.delete(existing.get(i));
-          }
-        }
+    // enforce max active refresh tokens per user
+    int max = jwtProperties.getMaxRefreshTokens();
+    java.util.List<com.example.boilerplate.model.RefreshToken> existing =
+        refreshTokenRepository.findByUserOrderByExpiresAtAsc(user);
+    if (max > 0 && existing != null && existing.size() >= max) {
+      int toDelete = existing.size() - (max - 1);
+      for (int i = 0; i < toDelete; i++) {
+        refreshTokenRepository.delete(existing.get(i));
+      }
+    }
     byte[] bytes = new byte[48];
     secureRandom.nextBytes(bytes);
     String token = Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
@@ -227,4 +228,3 @@ public class AuthService {
     }
   }
 }
-

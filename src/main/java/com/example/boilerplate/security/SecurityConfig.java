@@ -19,8 +19,7 @@ public class SecurityConfig {
   }
 
   @Bean
-  SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationFilter jwt)
-      throws Exception {
+  SecurityFilterChain securityFilterChain(HttpSecurity http, JwtService jwtService) throws Exception {
     return http.csrf(c -> c.disable())
         .cors(c -> {})
         .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -37,7 +36,8 @@ public class SecurityConfig {
                     .permitAll()
                     .anyRequest()
                     .authenticated())
-        .addFilterBefore(jwt, UsernamePasswordAuthenticationFilter.class)
+        .addFilterBefore(new JwtAuthenticationFilter(jwtService), UsernamePasswordAuthenticationFilter.class)
         .build();
   }
 }
+

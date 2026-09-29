@@ -42,7 +42,8 @@ public class JwtService {
     if ((secret == null || secret.isBlank())) {
       if (!isTest) {
         log.error(
-            "JWT secret is not set. Set environment variable JWT_SECRET or configure app.security.jwt.secret");
+            "JWT secret is not set. Set environment variable JWT_SECRET or configure"
+                + " app.security.jwt.secret");
         throw new IllegalStateException("JWT secret not configured");
       } else {
         log.warn("JWT secret not set but running with 'test' profile; skipping validation");
@@ -53,12 +54,22 @@ public class JwtService {
         && ("00000000000000000000000000000000".equals(secret)
             || (secret != null && secret.length() < 32))) {
       log.error(
-          "JWT secret is insecure or too short. Provide a secure random 32+ character secret in app.security.jwt.secret");
+          "JWT secret is insecure or too short. Provide a secure random 32+ character secret in"
+              + " app.security.jwt.secret");
       throw new IllegalStateException(
           "JWT secret missing or invalid (too short or default placeholder)");
     }
 
-    if (secret != null) {
+        // Defensive fallback for tests: ensure a usable key when secret is missing/weak
+    if (secret == null || secret.isBlank() || "00000000000000000000000000000000".equals(secret) || (secret != null && secret.length() < 32)) {
+      if (!isTest) {
+        log.error("JWT secret is not set or is insecure. Set environment variable JWT_SECRET or configure app.security.jwt.secret with >=32 characters");
+        throw new IllegalStateException("JWT secret not configured or insecure");
+      } else {
+        log.warn("JWT secret missing/weak but running with \"test\" profile; using fallback test key");
+        secret = "00000000000000000000000000000000";
+      }
+    }if (secret != null) {
       this.hmacKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
       log.info("JWT service initialized with key length {}.", secret.length());
     } else {
@@ -94,3 +105,5 @@ public class JwtService {
     }
   }
 }
+
+

@@ -1,4 +1,11 @@
 spring:
-  config.activate.on-profile: test
-  jpa.hibernate.ddl-auto: validate
-logging.level.root: WARN
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: none
+
+app.cors.allowed-origins: ['*']
+

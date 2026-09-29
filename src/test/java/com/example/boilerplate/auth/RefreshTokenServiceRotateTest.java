@@ -43,4 +43,3 @@ class RefreshTokenServiceRotateTest {
     verify(repo).delete(token);
   }
 }
-

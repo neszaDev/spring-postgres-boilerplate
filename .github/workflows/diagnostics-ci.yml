@@ -1,4 +1,4 @@
-﻿name: CI Diagnostics
+name: CI Diagnostics
 
 on:
   workflow_dispatch:
@@ -66,6 +66,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: diagnostics-logs
-          path: |
-            /home/runner/**/docker*  
-            /**/docker* || true
+          path: |\n            /home/runner/**/docker*\n
