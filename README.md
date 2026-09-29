@@ -159,3 +159,5 @@ See `DEVELOPER.md` for developer setup details and `docs/env.md` for environment
 
 **Windows / OneDrive note:** If you use Windows+OneDrive (or any path containing non-ASCII characters) the Maven wrapper (./mvnw / mvnw.cmd) may fail to launch on some environments. Workarounds: use a system Maven (mvn), move the repo to an ASCII-only path (e.g. C:\dev\spring-postgres-boilerplate), or run in WSL. CI uses system Maven/JDK21 so builds are unaffected.
 
+
+
