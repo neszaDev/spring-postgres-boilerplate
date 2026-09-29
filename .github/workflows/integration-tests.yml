@@ -43,7 +43,7 @@ jobs:
 
       - name: Build and run integration tests
         env:
-          MAVEN_OPTS: '-Xmx2g'
+          MAVEN_OPTS: '-Xmx2g'\n          SPRING_PROFILES_ACTIVE: test
         run: |
           mvn -B -DskipITs=false clean verify
 
@@ -54,4 +54,5 @@ jobs:
           name: integration-test-reports
           path: target/failsafe-reports/**
           retention-days: 7
+
 
