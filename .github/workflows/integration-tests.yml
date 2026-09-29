@@ -54,3 +54,4 @@ jobs:
           name: integration-test-reports
           path: target/failsafe-reports/**
           retention-days: 7
+
