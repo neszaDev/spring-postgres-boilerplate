@@ -11,7 +11,7 @@ import org.testcontainers.junit.jupiter.*;
 @SpringBootTest(properties = "spring.flyway.enabled=false")
 class BoilerplateApplicationIT {
   @Container
-  static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15-alpine");
+  static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15.3-alpine");
 
   @DynamicPropertySource
   static void database(DynamicPropertyRegistry r) {
