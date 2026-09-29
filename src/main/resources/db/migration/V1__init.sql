@@ -1,4 +1,4 @@
-﻿-- V1__init.sql - initial schema
+-- V1__init.sql - initial schema
 -- Use BIGSERIAL ids to match JPA entity id types (Long)
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
