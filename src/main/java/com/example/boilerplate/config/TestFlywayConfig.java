@@ -42,7 +42,14 @@ public class TestFlywayConfig {
             try {
               log.warn("Detected Postgres-only statement in {}: {}; attempting to apply remainder of script on H2", r.getFilename(), ex.getMessage());
               String content = new String(r.getInputStream().readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+              // Remove CREATE EXTENSION lines
               String filtered = content.replaceAll("(?i)^\\s*CREATE\\s+EXTENSION.*$\\n?", "");
+              // H2 compatibility substitutions
+              filtered = filtered.replaceAll("(?i)BIGSERIAL", "BIGINT AUTO_INCREMENT");
+              filtered = filtered.replaceAll("(?i)SERIAL", "INTEGER AUTO_INCREMENT");
+              filtered = filtered.replaceAll("(?i)TIMESTAMP WITH TIME ZONE", "TIMESTAMP");
+              filtered = filtered.replaceAll("(?i)timestamptz", "TIMESTAMP");
+              // Write filtered content to a temp file and execute
               java.io.File tmp = java.io.File.createTempFile("flyway-", ".sql");
               java.nio.file.Files.writeString(tmp.toPath(), filtered, java.nio.charset.StandardCharsets.UTF_8);
               tmp.deleteOnExit();
