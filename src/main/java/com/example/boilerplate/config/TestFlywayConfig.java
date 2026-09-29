@@ -1,4 +1,4 @@
-package com.example.boilerplate.config;
+﻿package com.example.boilerplate.config;
 
 import javax.sql.DataSource;
 import org.flywaydb.core.Flyway;
@@ -11,13 +11,14 @@ import org.springframework.context.annotation.Profile;
 public class TestFlywayConfig {
 
   @Bean
-  public Flyway flyway(DataSource dataSource) {
+  public Object flywayMigrateRunner(DataSource dataSource) {
     Flyway flyway = Flyway.configure()
         .dataSource(dataSource)
         .locations("classpath:db/migration")
         .baselineOnMigrate(true)
         .load();
     flyway.migrate();
-    return flyway;
+    return new Object();
   }
 }
+
