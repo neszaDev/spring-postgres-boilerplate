@@ -22,7 +22,7 @@ public class HealthIntegrationIT {
 
   @Container
   public static PostgreSQLContainer<?> postgres =
-      new PostgreSQLContainer<>("postgres:14-alpine-alpine")
+      new PostgreSQLContainer<>("postgres:14-alpine")
           .withDatabaseName("boilerplate")
           .withUsername("boilerplate")
           .withPassword("boilerplate");
@@ -43,4 +43,5 @@ public class HealthIntegrationIT {
     assertEquals("UP", r.getBody().get("status"));
   }
 }
+
 

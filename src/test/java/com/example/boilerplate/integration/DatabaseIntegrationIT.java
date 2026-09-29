@@ -22,7 +22,7 @@ public class DatabaseIntegrationIT {
 
   @Container
   public static PostgreSQLContainer<?> postgres =
-      new PostgreSQLContainer<>("postgres:14-alpine-alpine")
+      new PostgreSQLContainer<>("postgres:14-alpine")
           .withDatabaseName("boilerplate")
           .withUsername("boilerplate")
           .withPassword("boilerplate");
@@ -57,4 +57,5 @@ public class DatabaseIntegrationIT {
     }
   }
 }
+
 
