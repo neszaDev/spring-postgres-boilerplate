@@ -1,4 +1,4 @@
-﻿package com.example.boilerplate.security;
+package com.example.boilerplate.security;
 
 import com.example.boilerplate.config.JwtProperties;
 import io.jsonwebtoken.*;
