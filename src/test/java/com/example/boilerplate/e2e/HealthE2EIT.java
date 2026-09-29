@@ -17,7 +17,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HealthE2EIT {
   @Container
-  static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15-alpine");
+  static final PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:14-alpine-alpine");
 
   @DynamicPropertySource
   static void props(DynamicPropertyRegistry r) {
@@ -37,3 +37,4 @@ public class HealthE2EIT {
     assertThat(resp.getBody()).contains("UP");
   }
 }
+

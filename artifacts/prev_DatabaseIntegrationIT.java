@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class DatabaseIntegrationIT {
 
   @Container
-  public static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>( postgres:15-alpine)
+  public static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>( postgres:14-alpine-alpine)
       .withDatabaseName(boilerplate)
       .withUsername(boilerplate)
       .withPassword(boilerplate);
@@ -37,3 +37,4 @@ public class DatabaseIntegrationIT {
     assertTrue(count != null && count > 0,  users table should exist after migrations);
   }
 }
+
