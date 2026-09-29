@@ -1,23 +1,20 @@
 package com.example.boilerplate.auth;
 
-import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
+import com.example.boilerplate.config.JwtProperties;
 import com.example.boilerplate.model.RefreshToken;
 import com.example.boilerplate.model.User;
 import com.example.boilerplate.repository.RefreshTokenRepository;
 import com.example.boilerplate.repository.UserRepository;
 import com.example.boilerplate.security.JwtService;
-import com.example.boilerplate.config.JwtProperties;
 import com.example.boilerplate.service.AuthService;
+import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.Optional;
 
 class AuthServiceRefreshTokenLimitTest {
   @Mock RefreshTokenRepository rtRepo;
@@ -38,7 +35,8 @@ class AuthServiceRefreshTokenLimitTest {
 
   @Test
   void createRefreshToken_prunesOldTokens() throws Exception {
-    User u = new User(); u.setId(1L);
+    User u = new User();
+    u.setId(1L);
     RefreshToken old1 = mock(RefreshToken.class);
     RefreshToken old2 = mock(RefreshToken.class);
     when(rtRepo.findByUserOrderByExpiresAtAsc(u)).thenReturn(Arrays.asList(old1, old2));

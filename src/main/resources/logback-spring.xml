@@ -1,4 +1,4 @@
-﻿<configuration>
+<configuration>
   <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
   <springProperty scope="context" name="appName" source="spring.application.name"/>
 

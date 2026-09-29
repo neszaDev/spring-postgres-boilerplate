@@ -1,4 +1,4 @@
-﻿# Database Migrations (Flyway)
+# Database Migrations (Flyway)
 
 Migrations are stored in `src/main/resources/db/migration` and follow Flyway's SQL naming convention `V{version}__{description}.sql`.
 

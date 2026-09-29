@@ -22,7 +22,7 @@ public class AuthIntegrationIT {
 
   @Container
   public static PostgreSQLContainer<?> postgres =
-      new PostgreSQLContainer<>("postgres:15-alpine")
+      new PostgreSQLContainer<>("postgres:14-alpine")
           .withDatabaseName("boilerplate")
           .withUsername("boilerplate")
           .withPassword("boilerplate");
@@ -64,3 +64,5 @@ public class AuthIntegrationIT {
     assertEquals("ok", r4.getBody().get("status"));
   }
 }
+
+

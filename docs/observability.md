@@ -1,4 +1,4 @@
-﻿# Observability
+# Observability
 
 This project exposes standard Spring Boot Actuator endpoints and a Prometheus metrics endpoint.
 

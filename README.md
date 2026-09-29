@@ -1,4 +1,4 @@
-﻿# Spring Boot + PostgreSQL Boilerplate
+# Spring Boot + PostgreSQL Boilerplate
 
 A production-oriented Spring Boot 3 / Java 21 starter using PostgreSQL, Flyway, JWT authentication, Actuator, Prometheus metrics, structured production logs, and Docker.
 
@@ -159,3 +159,6 @@ See `DEVELOPER.md` for developer setup details and `docs/env.md` for environment
 
 **Windows / OneDrive note:** If you use Windows+OneDrive (or any path containing non-ASCII characters) the Maven wrapper (./mvnw / mvnw.cmd) may fail to launch on some environments. Workarounds: use a system Maven (mvn), move the repo to an ASCII-only path (e.g. C:\dev\spring-postgres-boilerplate), or run in WSL. CI uses system Maven/JDK21 so builds are unaffected.
 
+
+
+\n<!-- ci: diagnostics trigger -->\n
