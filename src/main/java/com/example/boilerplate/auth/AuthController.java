@@ -1,4 +1,4 @@
-package com.example.boilerplate.auth;
+﻿package com.example.boilerplate.auth;
 
 import com.example.boilerplate.auth.dto.*;
 import com.example.boilerplate.service.AuthService;
@@ -37,3 +37,4 @@ public class AuthController {
     service.logout(r.refreshToken());
   }
 }
+
