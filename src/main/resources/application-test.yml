@@ -6,3 +6,6 @@ spring:
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: none
+
+app.cors.allowed-origins: ['*']
+
