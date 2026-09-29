@@ -46,7 +46,7 @@ jobs:
           MAVEN_OPTS: '-Xmx2g'
           SPRING_PROFILES_ACTIVE: test
         run: |
-          mvn -B -DskipITs=false clean verify
+          mvn -B -DskipITs=false -Dspring.profiles.active=test clean verify
 
       - name: Upload integration test reports
         if: always()
@@ -55,6 +55,7 @@ jobs:
           name: integration-test-reports
           path: target/failsafe-reports/**
           retention-days: 7
+
 
 
 
